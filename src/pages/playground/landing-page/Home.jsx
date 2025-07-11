@@ -1,10 +1,18 @@
-import Button from "../../../components/shared/Button";
+import React from "react";
+import Navbar from "../../../components/playground/Navbar";
+import HeroSection from "../../../components/playground/HeroSection";
+import AboutSection from "../../../components/playground/AboutSection";
+import MissionSection from "../../../components/playground/MissionSection";
 
 const Home = () => {
   return (
-    <div className="text-white bg-black text-7xl flex flex-col gap-4 items-center justify-center h-screen">
-      Welcome to the Playground!
-      <Button>Click Me!</Button>
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <MissionSection />
+      </main>
     </div>
   );
 };
