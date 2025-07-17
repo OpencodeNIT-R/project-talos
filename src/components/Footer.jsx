@@ -75,11 +75,6 @@ const Footer = ({
           <h3 className="text-lg font-semibold">Quick Links</h3>
           <ul className="mt-2 space-y-1 text-sm">
             <li>
-              <Link to="/about" className="hover:underline">
-                About us
-              </Link>
-            </li>
-            <li>
               <Link to="/team" className="hover:underline">
                 Team
               </Link>
