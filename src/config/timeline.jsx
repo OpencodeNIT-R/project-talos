@@ -32,10 +32,10 @@ const Timeline = () => {
       id="achievements"
       className="bg-gradient-to-br from-background to-muted/30"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 md:px-8">
         {/* Header */}
         <div style={{ marginBottom: "7rem" }}>
-          <h2 className="text-3xl text-center font-bold text-blue-900 mb-4">
+          <h2 className="text-3xl text-center font-bold text-blue-900 mb-4 p-5">
             Our Achievements
           </h2>
           <p className="text-gray-700 text-center mb-6 max-w-3xl">

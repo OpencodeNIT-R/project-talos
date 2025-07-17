@@ -5,9 +5,9 @@ export default function Achievements() {
   const navigate = useNavigate();
 
   return (
-    <div className="px-4 md:px-12 py-8 max-w-screen-xl mx-auto">
+    <div className="px-4 md:px-12 py-10 max-w-screen-xl mx-auto">
       <div style={{ marginBottom: "12rem" }}>
-        <h2 className="text-3xl font-bold text-blue-900 mb-4">
+        <h2 className="text-3xl font-bold text-[#0B2044] mb-4">
           Our Achievements
         </h2>
         <p className="text-gray-700 mb-6 max-w-3xl">
