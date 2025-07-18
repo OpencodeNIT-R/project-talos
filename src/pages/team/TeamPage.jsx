@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
-import container from "../../assets/Frame 142.png";
+import teamMembers from "../../config/teammate";
 
-const TeamPage = ({ teamMembers = [] }) => {
+const TeamPage = () => {
   const [activeTeam, setActiveTeam] = useState("All");
 
   const teams = ["All", "Team 1", "Team 2", "Team 3", "Team 4"];
@@ -14,24 +14,15 @@ const TeamPage = ({ teamMembers = [] }) => {
 
   return (
     <section className="bg-white text-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28">
-        <img
-          src={container}
-          alt="Team Cover"
-          className="w-full h-auto object-contain rounded-lg"
-        />
-      </div>
-
-      <div className="text-center py-10 px-4 max-w-4xl mx-auto">
+      <div className="text-center px-4 max-w-4xl mx-auto scroll-mt-24 pt-20 lg:pt-8">
         <h2 className="text-3xl sm:text-4xl font-bold text-[#021640] mb-4">
           Meet Our Team
         </h2>
-        <p className="text-gray-700 text-lg">
+        <p className="text-gray-700 pb-6 text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit...
         </p>
       </div>
 
-      {/* Tabs */}
       <div className="flex justify-center flex-wrap gap-4 mb-10">
         {teams.map((team) => (
           <button
@@ -48,7 +39,6 @@ const TeamPage = ({ teamMembers = [] }) => {
         ))}
       </div>
 
-      {/* Team Cards */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {filteredMembers.map((member, index) => (
           <div key={index} className="flex flex-col items-center text-center">
