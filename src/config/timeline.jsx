@@ -105,7 +105,7 @@ const Timeline = () => {
                     </div>
                   )}
                 </div>
-                {/* Mobile view: single column, card below dot/line */}
+
                 <div className="col-span-9 flex justify-center md:hidden">
                   <div className="w-full max-w-md">
                     <AchievementCard
