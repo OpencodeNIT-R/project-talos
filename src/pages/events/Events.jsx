@@ -53,11 +53,7 @@ const Events = () => {
       <div className="absolute top-[-60px] right-[-60px] w-56 h-56 bg-[#51B8F2] opacity-50 rounded-full blur-3xl z-0 pointer-events-none"></div>
       <div className="absolute bottom-[-80px] left-[-50px] w-64 h-64 bg-[#51B8F2] opacity-50 rounded-full blur-3xl z-0 pointer-events-none"></div>
       <div className="absolute bottom-[-60px] right-[-40px] w-48 h-48 bg-[#51B8F2] opacity-50  rounded-full blur-3xl z-0 pointer-events-none"></div>
-      <img
-        src="https://res.cloudinary.com/dswk9scro/image/upload/v1752312233/image_1_nydvj8.png"
-        alt="events"
-        className="mx-auto my-12 w-full max-w-2xl rounded-xl shadow-md object-cover"
-      />
+      
       <div className="text-center">
         <h2 className="text-3xl font-bold text-[#0B2044]">
           Our Organised Events
