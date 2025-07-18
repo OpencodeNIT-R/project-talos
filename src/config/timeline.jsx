@@ -71,14 +71,14 @@ const Timeline = () => {
                   )}
                 </div>
                 {/* Timeline line and dot */}
-                <div className="col-span-1 flex flex-col items-center relative">
+                <div className="col-span-1 hidden md:flex flex-col items-center relative">
                   {/* Vertical line */}
                   <div className="w-1 bg-gray-300 h-full absolute top-0 left-1/2 -translate-x-1/2  z-0"></div>
 
                   {/* Timeline dot */}
                   <div className="z-10">
                     <div
-                      className={`w-4 h-4 rounded-full  border-background  bg-yellow-500 border-2 border-white transition-all duration-500 
+                      className={`w-4 h-4 rounded-full  border-background  bg-[#0B2044] border-2 border-white transition-all duration-500 
                         ${
                           visibleDots.has(index)
                             ? "bg-timeline-dot-active shadow-glow animate-glow-pulse"
