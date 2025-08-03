@@ -29,13 +29,13 @@ export default function HeroSection() {
 
           <div className="flex flex-col sm:flex-row sm:justify-center md:justify-start items-center mt-6 gap-4">
             <Button
-              className="bg-[rgba(6,25,70,1)] text-white px-14 py-2 rounded-md hover:bg-[rgba(6,25,70,0.9)]"
+              className="bg-[rgba(6,25,70,1)] text-white px-14 py-2 rounded-md transition duration-300 ease-in-out hover:bg-white hover:text-[rgba(6,25,70,1)]"
               style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
             >
               {siteConfig.hero.primaryButton}
             </Button>
             <Button
-              className="bg-transparent text-[rgba(55,115,236,1)] underline-offset-4 hover:underline"
+              className="bg-transparent text-[rgba(55,115,236,1)] underline-offset-4 transition duration-300 ease-in-out hover:bg-[rgba(55,115,236,1)] hover:text-white "
               style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
             >
               {siteConfig.hero.secondaryLink}

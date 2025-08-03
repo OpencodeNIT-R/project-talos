@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import images from "../../config/galary";
-import heroImages from "../../config/galaryPage";
+import images from "../../config/gallary";
+import heroImages from "../../config/gallaryPage";
 
 const NavButton = ({ direction, onClick }) => {
   const isNext = direction === "next";
@@ -36,7 +36,7 @@ const YearButton = ({ year, isSelected, onClick }) => (
     onClick={onClick}
     className={`px-4 py-1 rounded-full text-sm md:text-base transition-all ${
       isSelected
-        ? "bg-blue-600 text-white font-medium"
+        ? "bg-[#061946] text-white font-medium"
         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
     }`}
   >
@@ -105,26 +105,6 @@ export default function GallaryPage() {
               />
             ))}
           </div>
-
-          {/* Next/Prev Buttons */}
-          {heroImages.length > 1 && (
-            <>
-              <NavButton
-                direction="prev"
-                onClick={() =>
-                  setCurrentSlide((prev) =>
-                    prev === 0 ? heroImages.length - 1 : prev - 1,
-                  )
-                }
-              />
-              <NavButton
-                direction="next"
-                onClick={() =>
-                  setCurrentSlide((prev) => (prev + 1) % heroImages.length)
-                }
-              />
-            </>
-          )}
         </div>
       </div>
 
