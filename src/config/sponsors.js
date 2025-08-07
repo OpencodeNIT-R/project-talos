@@ -1,46 +1,41 @@
 // sponsors.js
 const sponsors = [
   {
-    name: "Sponsor One",
-    image: "https://via.placeholder.com/200x100?text=Sponsor+1",
-    link: "https://sponsor1.com",
+    name: "NIT Rourkela Alumini ",
+    image:
+      "https://res.cloudinary.com/dm406z4pf/image/upload/v1754590523/Sponsor_5_jkviya.jpg",
+    link: "https://www.nitraa.org/",
   },
   {
-    name: "Sponsor Two",
-    image: "https://via.placeholder.com/200x100?text=Sponsor+2",
-    link: "https://sponsor2.com",
+    name: "NALCO",
+    image:
+      "https://res.cloudinary.com/dm406z4pf/image/upload/v1754590523/Sponsor_4_c44gxu.jpg",
+    link: "https://nalcoindia.com/",
   },
   {
-    name: "Sponsor Three",
-    image: "https://via.placeholder.com/200x100?text=Sponsor+3",
-    link: "https://sponsor3.com",
+    name: "SOLID WORKS",
+    image:
+      "https://res.cloudinary.com/dm406z4pf/image/upload/v1754590497/Sponsors_2_p8nglm.jpg",
+    link: "https://www.solidworks.com/",
   },
   {
-    name: "Sponsor Three",
-    image: "https://via.placeholder.com/200x100?text=Sponsor+3",
-    link: "https://sponsor3.com",
+    name: "PHOENIX ROBOTIC",
+    image:
+      "https://res.cloudinary.com/dm406z4pf/image/upload/v1754590497/Sponsors_n6wktj.jpg",
+    link: "https://www.phoenixrobotic.com/",
   },
   {
-    name: "Sponsor Three",
-    image: "https://via.placeholder.com/200x100?text=Sponsor+3",
-    link: "https://sponsor3.com",
+    name: "ANSYS",
+    image:
+      "https://res.cloudinary.com/dm406z4pf/image/upload/v1754590497/Sponsors_3_a2nmqj.jpg",
+    link: "https://www.ansys.com/",
   },
   {
-    name: "Sponsor Three",
-    image: "https://via.placeholder.com/200x100?text=Sponsor+3",
-    link: "https://sponsor3.com",
+    name: "SAIL",
+    image:
+      "https://res.cloudinary.com/dm406z4pf/image/upload/v1754590497/Sponsor_6_bqcx5l.jpg",
+    link: "https://www.sail.co.in/",
   },
-  {
-    name: "Sponsor Three",
-    image: "https://via.placeholder.com/200x100?text=Sponsor+3",
-    link: "https://sponsor3.com",
-  },
-  {
-    name: "Sponsor Three",
-    image: "https://via.placeholder.com/200x100?text=Sponsor+3",
-    link: "https://sponsor3.com",
-  },
-  // Add more sponsors freely
 ];
 
 export default sponsors;
