@@ -9,6 +9,7 @@ import GallaryPage from "./pages/gallery/Gallery.jsx";
 import Events from "./pages/events/Events.jsx";
 import AchievementPage from "./pages/achievements/AchievementPage.jsx";
 import TeamPage from "./pages/team/TeamPage.jsx";
+import Applications from "./pages/applications/Applications.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -21,6 +22,7 @@ createRoot(document.getElementById("root")).render(
           <Route path="events" element={<Events />} />
           <Route path="achievements" element={<AchievementPage />} />
           <Route path="team" element={<TeamPage />} />
+          <Route path="applications" element={<Applications />} />
         </Route>
       </Routes>
     </BrowserRouter>

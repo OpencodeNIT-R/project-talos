@@ -1,10 +1,11 @@
 import { siteConfig } from "../config/navbarHero";
 import Button from "./shared/Button";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -15,6 +16,17 @@ export default function Navbar() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleJoinUsClick = () => {
+    navigate("/applications");
+  };
+
+  const handleContactUsClick = () => {
+    const footer = document.querySelector("footer");
+    if (footer) {
+      footer.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <header
@@ -51,6 +63,7 @@ export default function Navbar() {
             backgroundColor="white"
             textColor="black"
             className="border border-black px-3 py-1.5 text-sm transition duration-300 ease-in-out hover:bg-[rgba(55,115,236,1)] hover:text-white hover:border-none"
+            onClick={handleJoinUsClick}
           >
             Join Us
           </Button>
@@ -59,6 +72,7 @@ export default function Navbar() {
             backgroundColor="rgba(6,25,70,1)"
             textColor="white"
             className="px-3 py-1.5 text-sm transition duration-300 ease-in-out hover:bg-white hover:text-[rgba(6,25,70,1)]"
+            onClick={handleContactUsClick}
           >
             Contact Us
           </Button>
@@ -134,6 +148,10 @@ export default function Navbar() {
             backgroundColor="transparent"
             textColor="white"
             className="w-full border border-white px-4 py-3 text-center text-base transition duration-300 hover:bg-white hover:text-[rgba(6,25,70,1)]"
+            onClick={() => {
+              handleJoinUsClick();
+              setMobileMenuOpen(false);
+            }}
           >
             Join Us
           </Button>
@@ -142,6 +160,10 @@ export default function Navbar() {
             backgroundColor="white"
             textColor="rgba(6,25,70,1)"
             className="w-full px-4 py-3 text-center text-base transition duration-300 hover:bg-blue-100"
+            onClick={() => {
+              handleContactUsClick();
+              setMobileMenuOpen(false);
+            }}
           >
             Contact Us
           </Button>
