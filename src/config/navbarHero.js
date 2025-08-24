@@ -18,7 +18,7 @@ export const siteConfig = {
     primaryButton: "Join Us",
     secondaryLink: "Learn More",
     image:
-      "https://res.cloudinary.com/dwjcki9ey/image/upload/v1752132771/image_1_w5ijjl.png",
+      "https://res.cloudinary.com/djqgs2pet/image/upload/v1756018619/IMG_20250822_234850_bxluqx.jpg",
     image1:
       "https://res.cloudinary.com/dwjcki9ey/image/upload/v1752159681/Ellipse_1_sxc0u7.png",
     image2:
@@ -31,7 +31,7 @@ export const siteConfig = {
       "ASME NIT Rourkela is dedicated to fostering engineering innovation among students. We serve as a pivotal connecting link between academia and industry, tackling technical obstacles with enthusiasm through our various initiatives and events. ASME NIT Rourkela is committed to fostering engineering innovation and practical application among students. All of us are free to make a positive impact through our various technical and non-events.",
     button: "Learn More",
     image:
-      "https://res.cloudinary.com/dwjcki9ey/image/upload/v1752132823/image_lxdaqf.png",
+      "https://res.cloudinary.com/djqgs2pet/image/upload/v1756018623/IMG-20250819-WA0130_pogbzm.jpg",
   },
 
   missions: [
