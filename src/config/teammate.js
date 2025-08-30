@@ -6,7 +6,6 @@ const teamMembers = [
     img: "https://res.cloudinary.com/dm406z4pf/image/upload/v1754119368/Photo_from_Soumya_Mohanty_yv6fsd.jpg",
     description: "",
     linkedin: "https://www.linkedin.com/in/soumya-mohanty-me0409",
-    twitter: "https://x.com/home",
   },
   {
     name: "Pratyush Prateek Dash",
@@ -15,7 +14,6 @@ const teamMembers = [
     description: "",
     team: "Executive Body",
     linkedin: "https://www.linkedin.com/in/pratyush-prateek-dash-b8298128a/",
-    twitter: "https://x.com/home",
   },
   {
     name: "Sahil Singh",
@@ -24,7 +22,6 @@ const teamMembers = [
     description: "",
     team: "Executive Body",
     linkedin: "https://linkedin.com/in/",
-    twitter: "https://x.com/home",
   },
   {
     name: "Gurudutta Sutar",
@@ -33,7 +30,6 @@ const teamMembers = [
     description: "",
     team: "Executive Body",
     linkedin: "https://linkedin.com/in/",
-    twitter: "https://x.com/home",
   },
   {
     name: "Samidha Behera",
@@ -42,7 +38,6 @@ const teamMembers = [
     description: "",
     team: "Executive Body",
     linkedin: "https://www.linkedin.com/in/samidha-behera-09297828a/",
-    twitter: "https://x.com/home",
   },
   {
     name: "Nikhil Kumar Dalai",
@@ -51,7 +46,6 @@ const teamMembers = [
     description: "",
     team: "Executive Body",
     linkedin: "https://www.linkedin.com/in/nikhil-dalai/",
-    twitter: "https://x.com/home",
   },
   {
     name: "Aaditya Sahu",
@@ -60,7 +54,6 @@ const teamMembers = [
     team: "Team Bluestreak",
     description: "",
     linkedin: "https://www.linkedin.com/in/aaditya-sahoo-9605a4279/",
-    twitter: "https://x.com/home",
   },
   {
     name: "Komal Hitesh",
@@ -69,7 +62,6 @@ const teamMembers = [
     description: "",
     team: "Team Bluestreak",
     linkedin: "https://www.linkedin.com/in/komal-hitesh-gude-a1402830a/",
-    twitter: "https://x.com/home",
   },
   {
     name: "Somanchi Shanmukh",
@@ -86,7 +78,6 @@ const teamMembers = [
     description: "",
     team: "Team Bluestreak",
     linkedin: "https://www.linkedin.com/in/aryan-dongare-82aa40325/",
-    twitter: "https://x.com/home",
   },
   {
     name: "Mayukh Thakuria",
@@ -95,7 +86,6 @@ const teamMembers = [
     description: "",
     team: "Team Bluestreak",
     linkedin: "https://www.linkedin.com/in/mayukh-thakuria-509ab8306/",
-    twitter: "https://x.com/home",
   },
   {
     name: "Smruti Satabdi Prusty",
@@ -104,7 +94,6 @@ const teamMembers = [
     description: "",
     team: "Team Bluestreak",
     linkedin: "https://www.linkedin.com/in/smruti-satabdi-prusty-a35a3a2a2/",
-    twitter: "https://x.com/home",
   },
   {
     name: "Chittaranjan Behera",
@@ -113,7 +102,6 @@ const teamMembers = [
     description: "",
     team: "Team Blueprint",
     linkedin: "https://www.linkedin.com/in/chittaranjan-behera-012b64292/",
-    twitter: "https://x.com/home",
   },
   {
     name: "Dharitri",
@@ -122,7 +110,6 @@ const teamMembers = [
     description: "",
     team: "Team Blueprint",
     linkedin: "https://www.linkedin.com/in/dharitri-pradhan-a92b98269/",
-    twitter: "https://x.com/home",
   },
   {
     name: "Nikhil Raj Kiran Sahoo",
@@ -131,7 +118,6 @@ const teamMembers = [
     description: "",
     team: "Team Blueprint",
     linkedin: "https://www.linkedin.com/in/nikhil-rajkiran-sahoo-515397277/",
-    twitter: "https://x.com/home",
   },
   {
     name: "Soaham Tripathy",
@@ -140,7 +126,6 @@ const teamMembers = [
     description: "",
     team: "Team Blueprint",
     linkedin: "https://www.linkedin.com/in/soaham-tripathy-223582336/",
-    twitter: "https://x.com/home",
   },
   {
     name: "Soaham Tripathy",
@@ -149,7 +134,6 @@ const teamMembers = [
     description: "",
     team: "Team Bluebird",
     linkedin: "https://www.linkedin.com/in/soaham-tripathy-223582336/",
-    twitter: "https://x.com/home",
   },
   {
     name: "Dev Soni",
@@ -158,7 +142,6 @@ const teamMembers = [
     description: "",
     team: "Team Bluebird",
     linkedin: "https://www.linkedin.com/in/dev-soni-80020228a/",
-    twitter: "https://x.com/home",
   },
 ];
 

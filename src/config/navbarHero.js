@@ -7,6 +7,7 @@ export const siteConfig = {
       { name: "Events", href: "/events" },
       { name: "Achievements", href: "/achievements" },
       { name: "Gallery", href: "/gallery" },
+      { name: "Applications", href: "/applications" },
     ],
   },
 
@@ -36,19 +37,19 @@ export const siteConfig = {
 
   missions: [
     {
-      title: "Our Mission",
+      title: "Technical Excellence",
       description:
-        "To advance mechanical engineering knowledge and skills through innovation and practical application.",
+        "To equip members with strong technical skills in design, manufacturing, and emerging technologies through hands-on projects, workshops, and competitions.",
     },
     {
-      title: "Our Mission",
+      title: "Professional Growth",
       description:
-        "To advance mechanical engineering knowledge and skills through innovation and practical application.",
+        "To create opportunities for students to interact with industry experts, researchers, and alumni, fostering knowledge exchange and career development.",
     },
     {
-      title: "Our Mission",
+      title: "Community Building & Leadership",
       description:
-        "To advance mechanical engineering knowledge and skills through innovation and practical application.",
+        "To cultivate a culture of teamwork, innovation, and leadership by organizing engaging events, promoting collaboration, and encouraging active participation.",
     },
   ],
 };
