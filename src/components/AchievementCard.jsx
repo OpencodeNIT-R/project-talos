@@ -1,7 +1,89 @@
-import { Calendar, Award, TrendingUp } from "lucide-react";
+import {
+  Calendar,
+  Award,
+  TrendingUp,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 
-const AchievementCard = ({ title, description, year, isLeft, index }) => {
+const ImageCarousel = ({ images, title }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1,
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1,
+    );
+  };
+
+  if (!images || images.length === 0) return null;
+
+  return (
+    <div className="mb-4 overflow-hidden rounded-lg relative group">
+      <div className="w-full h-48 bg-gray-100 flex items-center justify-center">
+        <img
+          src={images[currentIndex]}
+          alt={`${title} - Image ${currentIndex + 1}`}
+          className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+          onError={(e) => {
+            e.target.style.display = "none";
+          }}
+        />
+      </div>
+
+      {/* Navigation arrows - only show if multiple images */}
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={prevImage}
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 z-10"
+            aria-label="Previous image"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+          <button
+            onClick={nextImage}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 z-10"
+            aria-label="Next image"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
+
+          {/* Image indicators */}
+          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1 z-10">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? "bg-white"
+                    : "bg-white/50 hover:bg-white/75"
+                }`}
+                aria-label={`Go to image ${index + 1}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+const AchievementCard = ({
+  title,
+  description,
+  year,
+  isLeft,
+  index,
+  images,
+}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -63,6 +145,9 @@ const AchievementCard = ({ title, description, year, isLeft, index }) => {
         </div>
 
         <div className="relative p-6 pt-8">
+          {/* Image Carousel Section */}
+          <ImageCarousel images={images} title={title} />
+
           {/* Year badge with enhanced styling */}
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center text-[#0B2044] text-sm font-semibold bg-[#51B8F2]/10 px-3 py-1.5 rounded-full">

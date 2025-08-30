@@ -1,3 +1,35 @@
+// Import all year-based images
+import img2014 from "../assets/2014.png";
+import img2014_2 from "../assets/2014 (2).png";
+import img2014_3 from "../assets/2014 (3).png";
+import img2016 from "../assets/2016.png";
+import img2016_2 from "../assets/2016 (2).png";
+import img2017 from "../assets/2017.png";
+import img2017_2 from "../assets/2017 (2).png";
+import img2017_3 from "../assets/2017 (3).png";
+import img2022 from "../assets/2022.png";
+import img2023 from "../assets/2023.png";
+import img2023_2 from "../assets/2023 (2).png";
+import img2024 from "../assets/2024.png";
+import img2025 from "../assets/2025.png";
+import img2025_2 from "../assets/2025 (2).png";
+import img2025_3 from "../assets/2025 (3).png";
+import img2025_4 from "../assets/2025 (4).png";
+import img2025_5 from "../assets/2025 (5).png";
+import img2025_6 from "../assets/2025 (6).png";
+
+// Organize images by year
+const yearImages = {
+  2014: [img2014, img2014_2, img2014_3],
+  2016: [img2016, img2016_2],
+  2017: [img2017, img2017_2, img2017_3],
+  2022: [img2022],
+  2023: [img2023, img2023_2],
+  2024: [img2024],
+  2025: [img2025, img2025_2, img2025_3, img2025_4],
+  "2025a": [img2025_5, img2025_6],
+};
+
 const achievementsData = [
   {
     id: 1,
@@ -7,6 +39,7 @@ const achievementsData = [
     year: "2021",
     category: "HPVC",
     rank: "3rd Global",
+    images: yearImages["2021"] || null,
   },
   {
     id: 2,
@@ -16,6 +49,7 @@ const achievementsData = [
     year: "2022",
     category: "HPVC",
     rank: "2nd Global",
+    images: yearImages["2022"] || null,
   },
   {
     id: 3,
@@ -24,6 +58,7 @@ const achievementsData = [
     year: "2023",
     category: "Design",
     rank: "9th Global",
+    images: yearImages["2023"] || null,
   },
   {
     id: 4,
@@ -33,6 +68,7 @@ const achievementsData = [
     year: "2024",
     category: "XRC",
     rank: "1st Place",
+    images: yearImages["2024"] || null,
   },
   {
     id: 5,
@@ -42,6 +78,7 @@ const achievementsData = [
     year: "2025",
     category: "HPVC",
     rank: "3rd Overall",
+    images: yearImages["2025"] || null,
   },
   {
     id: 6,
@@ -51,6 +88,7 @@ const achievementsData = [
     year: "2019",
     category: "HPVC",
     rank: "13th Overall",
+    images: yearImages["2019"] || null,
   },
   {
     id: 7,
@@ -60,6 +98,7 @@ const achievementsData = [
     year: "2017",
     category: "HPVC",
     rank: "20th Place",
+    images: yearImages["2017"] || null,
   },
   {
     id: 8,
@@ -69,6 +108,7 @@ const achievementsData = [
     year: "2016",
     category: "HPVC",
     rank: "2nd Design",
+    images: yearImages["2016"] || null,
   },
   {
     id: 9,
@@ -77,6 +117,7 @@ const achievementsData = [
     year: "2015",
     category: "HPVC",
     rank: "Best Innovation",
+    images: yearImages["2015"] || null,
   },
   {
     id: 10,
@@ -86,6 +127,7 @@ const achievementsData = [
     year: "2014",
     category: "HPVC",
     rank: "Best Analysis",
+    images: yearImages["2014"] || null,
   },
   {
     id: 11,
@@ -95,6 +137,7 @@ const achievementsData = [
     year: "2025",
     category: "Design",
     rank: "2nd Overall",
+    images: yearImages["2025a"] || null,
   },
 ];
 

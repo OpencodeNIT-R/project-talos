@@ -36,6 +36,12 @@ const sponsors = [
       "https://res.cloudinary.com/dm406z4pf/image/upload/v1754590497/Sponsor_6_bqcx5l.jpg",
     link: "https://www.sail.co.in/",
   },
+  {
+    name: "Track and Trail",
+    image:
+      "https://res.cloudinary.com/dm406z4pf/image/upload/v1755961510/idoNSj_At0_1755961363237_flnwh6.jpg",
+    link: "https://trackandtrail.in/",
+  },
 ];
 
 export default sponsors;

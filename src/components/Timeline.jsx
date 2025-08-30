@@ -185,6 +185,7 @@ const Timeline = () => {
                                 year={achievement.year}
                                 isLeft={true}
                                 index={index}
+                                images={achievement.images}
                               />
                             </div>
                           )}
@@ -254,6 +255,7 @@ const Timeline = () => {
                                 year={achievement.year}
                                 isLeft={false}
                                 index={index}
+                                images={achievement.images}
                               />
                             </div>
                           )}
@@ -276,6 +278,7 @@ const Timeline = () => {
                           year={achievement.year}
                           isLeft={true}
                           index={index}
+                          images={achievement.images}
                         />
                       </div>
                     </div>
