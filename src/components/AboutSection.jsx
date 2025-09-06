@@ -18,21 +18,15 @@ export default function AboutSection() {
         <div className="w-full px-4 relative flex justify-center items-center  h-[300px] sm:h-[350px] md:h-[500px]">
           <img
             src={siteConfig.about.image}
-            alt="About image 1"
-            className="block md:hidden  mb-10 rounded-md shadow-lg object-cover w-full h-full"
-          />
-
-          <img
-            src={siteConfig.about.image}
             alt="About image 1 fade"
-            className={`hidden md:block rounded-md shadow-lg object-cover w-full h-full absolute top-0 left-0 right-0 bottom-0 m-auto transition-opacity duration-1000 ${
+            className={` rounded-md shadow-lg mb-10 object-cover w-full h-full absolute top-0 left-0 right-0 bottom-0 m-auto transition-opacity duration-1000 ${
               showFirst ? "opacity-100 z-10" : "opacity-0 z-0"
             }`}
           />
           <img
             src={siteConfig.hero.image}
             alt="About image 2 fade"
-            className={`hidden md:block rounded-md shadow-lg object-cover w-full h-full absolute top-0 left-0 right-0 bottom-0 m-auto transition-opacity duration-1000 ${
+            className={`rounded-md shadow-lg mb-10 object-cover w-full h-full absolute top-0 left-0 right-0 bottom-0 m-auto transition-opacity duration-1000 ${
               showFirst ? "opacity-0 z-0" : "opacity-100 z-10"
             }`}
           />

@@ -53,24 +53,18 @@ export default function HeroSection() {
 
         <div className="w-full max-w-[1600px] px-2 md:px-0 relative h-[350px] md:h-[500px] flex justify-center items-center">
           <div className="w-full max-w-[1600px] mt-0 px-2 md:px-0 relative flex justify-center items-center h-[300px] sm:h-[350px] md:h-[500px]">
-            <img
-              src={siteConfig.hero.image}
-              alt="Hero image 1"
-              className="rounded-md shadow-lg object-cover w-full h-full"
-            />
-
+            {" "}
             <img
               src={siteConfig.about.image}
               alt="Hero image 2"
-              className={`rounded-md shadow-lg object-cover w-full h-full absolute top-0 left-0 right-0 bottom-0 m-auto transition-opacity duration-1000 hidden md:block ${
+              className={`rounded-md shadow-lg object-cover w-full h-full absolute top-0 left-0 right-0 bottom-0 m-auto transition-opacity duration-1000  ${
                 showFirst ? "opacity-0 z-0" : "opacity-100 z-10"
               }`}
             />
-
             <img
               src={siteConfig.hero.image}
               alt="Hero image 1 fade"
-              className={`rounded-md shadow-lg object-cover w-full h-full absolute top-0 left-0 right-0 bottom-0 m-auto transition-opacity duration-1000 hidden md:block ${
+              className={`rounded-md shadow-lg object-cover w-full h-full absolute top-0 left-0 right-0 bottom-0 m-auto transition-opacity duration-1000  ${
                 showFirst ? "opacity-100 z-10" : "opacity-0 z-0"
               }`}
             />
