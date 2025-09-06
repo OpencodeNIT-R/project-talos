@@ -31,8 +31,10 @@ const ImageCarousel = ({ images, title }) => {
           src={images[currentIndex]}
           alt={`${title} - Image ${currentIndex + 1}`}
           className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
           onError={(e) => {
             e.target.style.display = "none";
+            console.warn(`Failed to load image: ${images[currentIndex]}`);
           }}
         />
       </div>
