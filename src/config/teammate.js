@@ -48,7 +48,7 @@ const teamMembers = [
     linkedin: "https://www.linkedin.com/in/nikhil-dalai/",
   },
   {
-    name: "Aaditya Sahu",
+    name: "Aaditya Sahoo",
     title: "Captain",
     img: "https://res.cloudinary.com/dm406z4pf/image/upload/v1754117969/aaditya_kwvlki.jpg",
     team: "Team Bluestreak",

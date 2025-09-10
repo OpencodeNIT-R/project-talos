@@ -13,6 +13,8 @@ const SponsorsSection = () => {
     const updateItemsToShow = () => {
       if (window.innerWidth >= 1024) {
         setItemsToShow(3);
+      } else if (window.innerWidth >= 768) {
+        setItemsToShow(2);
       } else if (window.innerWidth >= 640) {
         setItemsToShow(2);
       } else {
@@ -59,7 +61,7 @@ const SponsorsSection = () => {
 
     const autoPlay = setInterval(() => {
       goToNext();
-    }, 5000);
+    }, 4000);
 
     return () => clearInterval(autoPlay);
   }, [isPaused, itemsToShow]);
@@ -80,33 +82,43 @@ const SponsorsSection = () => {
   };
 
   return (
-    <section className="bg-white py-10">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* CENTERED TITLE SECTION */}
-        <div className="mb-8" style={{ textAlign: "center" }}>
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">
-            Our Sponsors and Partners
+    <section className="bg-white py-20 relative overflow-hidden">
+      {/* Subtle Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 right-10 w-72 h-72 bg-blue-50 rounded-full opacity-40 blur-2xl"></div>
+        <div className="absolute bottom-20 left-10 w-72 h-72 bg-indigo-50 rounded-full opacity-40 blur-2xl"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+            Our Trusted Partners
           </h2>
-          <p className="text-gray-700 text-lg">
-            We are proudly supported by our amazing sponsors and partners.
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 mx-auto mb-6 rounded-full"></div>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Proudly supported by amazing organizations who believe in our
+            mission and help us drive innovation forward.
           </p>
         </div>
 
+        {/* Sponsors Carousel */}
         <div
-          className="relative px-12"
+          className="relative px-16"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
+          {/* Navigation Buttons */}
           <button
             onClick={handlePrevClick}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#00163A] hover:bg-[#2563eb] rounded-full p-2 shadow cursor-pointer"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 border border-gray-200 rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-200"
           >
-            <ArrowLeft className="w-6 h-6 text-white" />
+            <ArrowLeft className="w-5 h-5 text-gray-600" />
           </button>
 
           <div
             ref={containerRef}
-            className="flex overflow-x-auto scroll-smooth"
+            className="flex overflow-x-auto scroll-smooth gap-8"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {sponsors.map((sponsor, index) => (
@@ -115,22 +127,14 @@ const SponsorsSection = () => {
                 href={sponsor.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-shrink-0 px-2 sponsor-item"
+                className="flex-shrink-0"
                 style={{ width: `${100 / itemsToShow}%` }}
               >
-                <div
-                  className="h-64 bg-white flex items-center justify-center rounded-xl hover:shadow-xl transition duration-300 border-2 cursor-pointer"
-                  style={{
-                    transition: "all 0.3s ease",
-                  }}
-                >
+                <div className="h-64 bg-gradient-to-br from-white to-gray-50/50 flex items-center justify-center rounded-2xl border border-gray-100 hover:border-blue-200 hover:shadow-lg transition-all duration-300 p-12 group">
                   <img
                     src={sponsor.image}
                     alt={sponsor.name}
-                    className="object-contain h-32 sponsor-image"
-                    style={{
-                      transition: "transform 0.3s ease, filter 0.3s ease",
-                    }}
+                    className="max-h-32 max-w-full object-contain transition-all duration-300 group-hover:brightness-110"
                   />
                 </div>
               </a>
@@ -139,19 +143,12 @@ const SponsorsSection = () => {
 
           <button
             onClick={handleNextClick}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#00163A] hover:bg-[#2563eb] rounded-full p-2 shadow cursor-pointer"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 border border-gray-200 rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-200"
           >
-            <ArrowRight className="w-6 h-6 text-white" />
+            <ArrowRight className="w-5 h-5 text-gray-600" />
           </button>
         </div>
       </div>
-
-      <style jsx>{`
-        .sponsor-item:hover .sponsor-image {
-          transform: scale(1.05);
-          filter: brightness(1.1);
-        }
-      `}</style>
     </section>
   );
 };

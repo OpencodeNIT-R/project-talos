@@ -30,18 +30,21 @@ const NavButton = ({ direction, onClick }) => {
   );
 };
 
-const YearButton = ({ year, isSelected, onClick }) => (
-  <button
-    onClick={onClick}
-    className={`px-4 py-1 rounded-full text-sm md:text-base transition-all ${
-      isSelected
-        ? "bg-[#061946] text-white font-medium"
-        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-    }`}
-  >
-    {year === "all" ? "All Years" : year}
-  </button>
-);
+const YearButton = ({ year, isSelected, onClick }) => {
+  const label = year === "all" ? "All" : String(year);
+  return (
+    <button
+      onClick={onClick}
+      className={`px-4 py-1 rounded-full text-sm md:text-base transition-all ${
+        isSelected
+          ? "bg-[#061946] text-white font-medium"
+          : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+      }`}
+    >
+      {label === "others" ? "others" : label}
+    </button>
+  );
+};
 
 const GalleryItem = ({ image }) => (
   <div className="group cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 break-inside-avoid mb-6">
@@ -65,12 +68,25 @@ export default function GallaryPage() {
     return () => clearInterval(interval);
   }, []);
 
-  const years = ["all", ...new Set(images.map((image) => image.year))].sort();
+  // Build years list keeping numeric years sorted, then string years
+  const allYears = Array.from(new Set(images.map((image) => image.year)));
+  const numericYears = allYears
+    .filter((y) => typeof y === "number")
+    .sort((a, b) => a - b);
+  const stringYears = allYears
+    .filter((y) => typeof y === "string" && y !== "all")
+    .sort();
+  const years = ["all", ...numericYears, ...stringYears];
 
-  const galleryImages =
-    selectedYear === "all"
-      ? images
-      : images.filter((image) => image.year === Number(selectedYear));
+  const galleryImages = (() => {
+    if (selectedYear === "all") return images;
+    // if selectedYear is a string that is not numeric, filter by exact match
+    if (typeof selectedYear === "string" && isNaN(Number(selectedYear))) {
+      return images.filter((image) => image.year === selectedYear);
+    }
+    // otherwise treat as numeric year
+    return images.filter((image) => image.year === Number(selectedYear));
+  })();
 
   return (
     <div className="w-full">
