@@ -15,6 +15,9 @@ const events = [
       "Turbogen-X put participants' ingenuity to the test as they crafted custom wind blades from simple DIY materials. With limited resources and unlimited imagination, they raced to create designs capable of capturing the wind most efficiently, turning a simple build into a battle of innovation and aerodynamics.",
     images: [
       "https://res.cloudinary.com/dswk9scro/image/upload/v1754816173/Turbogen_x_ozbic4.jpg",
+      "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757189537/WhatsApp_Image_2025-09-06_at_11.50.33_ede814d3_cdkcyp.jpg",
+      "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757189537/WhatsApp_Image_2025-09-06_at_11.50.41_b67d287c_nnqncf.jpg",
+      "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757189537/WhatsApp_Image_2025-09-06_at_11.50.24_14774c88_qz4dgl.jpg",
     ],
     type: "past",
   },

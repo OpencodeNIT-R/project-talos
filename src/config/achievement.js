@@ -1,33 +1,41 @@
-// Import all year-based images
-import img2014 from "../assets/2014.png";
-import img2014_2 from "../assets/2014 (2).png";
-import img2014_3 from "../assets/2014 (3).png";
-import img2016 from "../assets/2016.png";
-import img2016_2 from "../assets/2016 (2).png";
-import img2017 from "../assets/2017.png";
-import img2017_2 from "../assets/2017 (2).png";
-import img2017_3 from "../assets/2017 (3).png";
-import img2022 from "../assets/2022.png";
-import img2023 from "../assets/2023.png";
-import img2023_2 from "../assets/2023 (2).png";
-import img2024 from "../assets/2024.png";
-import img2025 from "../assets/2025.png";
-import img2025_2 from "../assets/2025 (2).png";
-import img2025_3 from "../assets/2025 (3).png";
-import img2025_4 from "../assets/2025 (4).png";
-import img2025_5 from "../assets/2025 (5).png";
-import img2025_6 from "../assets/2025 (6).png";
-
-// Organize images by year
+// Cloudinary image URLs organized by year
 const yearImages = {
-  2014: [img2014, img2014_2, img2014_3],
-  2016: [img2016, img2016_2],
-  2017: [img2017, img2017_2, img2017_3],
-  2022: [img2022],
-  2023: [img2023, img2023_2],
-  2024: [img2024],
-  2025: [img2025, img2025_2, img2025_3, img2025_4],
-  "2025a": [img2025_5, img2025_6],
+  2014: [
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187757/2014_lvi55q.png",
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187759/2014_2_uvrv9i.png",
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187729/2014_3_xjukfw.png",
+  ],
+  2016: [
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187724/2016_pfpnzc.png",
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187726/2016_2_zgd5q5.png",
+  ],
+  2017: [
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187728/2017_i9i11q.png",
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187726/2017_2_yjopnq.png",
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187713/2017_3_tqnc6m.png",
+  ],
+  2022: [
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187760/2022_akbqkt.png",
+  ],
+  2023: [
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187763/2023_vigtpz.png",
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187748/2023_2_rfuelk.png",
+  ],
+  2024: [
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187740/2024_f5wbea.png",
+  ],
+  2025: [
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187786/2025_nkufbt.png",
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187763/2025_2_ppf1yz.png",
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187755/2025_3_c9afsx.png",
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187767/2025_4_dgi6cv.png",
+  ],
+  "2025a": [
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187782/2025_5_hbhjwd.png",
+    "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757187788/2025_6_qjkb5l.png",
+  ],
+  2019: [],
+  2015: [],
 };
 
 const achievementsData = [
@@ -39,7 +47,7 @@ const achievementsData = [
     year: "2021",
     category: "HPVC",
     rank: "3rd Global",
-    images: yearImages["2021"] || null,
+    images: [],
   },
   {
     id: 2,
@@ -142,7 +150,7 @@ const achievementsData = [
 ];
 
 export const achivementTop = {
-  link: "https://res.cloudinary.com/dsjxx976j/image/upload/v1755452142/DSC00743_sw9grt.jpg",
+  link: "https://res.cloudinary.com/dhtfkpk4r/image/upload/v1757189128/WhatsApp_Image_2025-09-07_at_01.34.47_ed4b1a9b_whzfyx.jpg",
 };
 
 export default achievementsData;
