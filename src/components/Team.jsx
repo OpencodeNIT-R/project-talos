@@ -1,215 +1,154 @@
-import { useState, useEffect } from "react";
 import teamMembers from "../config/teammate";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa6";
 import { useNavigate } from "react-router";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 const TeamSlider = () => {
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [cardsPerView, setCardsPerView] = useState(1);
-  const [activeTeam, setActiveTeam] = useState("All");
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const handleScreenResize = () => {
-      const screenWidth = window.innerWidth;
-
-      if (screenWidth >= 1200) {
-        setCardsPerView(4);
-      } else if (screenWidth >= 850) {
-        setCardsPerView(3);
-      } else if (screenWidth >= 500) {
-        setCardsPerView(2);
-      } else {
-        setCardsPerView(1);
-      }
-    };
-
-    handleScreenResize();
-    window.addEventListener("resize", handleScreenResize);
-
-    return () => window.removeEventListener("resize", handleScreenResize);
-  }, []);
 
   const uniqueTeamMembers = Array.from(
     new Map(teamMembers.map((member) => [member.name, member])).values(),
   );
 
-  const teams = [
-    "All",
-    "Executive Body",
-    "Team Bluebird",
-    "Team Bluestreak",
-    "Team Blueprint",
-  ];
-
-  const filteredTeamMembers =
-    activeTeam === "All"
-      ? uniqueTeamMembers
-      : uniqueTeamMembers.filter((member) => member.team === activeTeam);
-
-  const maxSlideIndex = Math.max(0, filteredTeamMembers.length - cardsPerView);
-
-  const showNextMembers = () => {
-    setCurrentSlideIndex((currentIndex) => {
-      if (currentIndex >= maxSlideIndex) {
-        return 0;
-      }
-
-      const remainingCards = maxSlideIndex - currentIndex;
-      const cardsToMove = Math.min(cardsPerView, remainingCards);
-
-      return currentIndex + cardsToMove;
-    });
-  };
-
-  const showPreviousMembers = () => {
-    setCurrentSlideIndex((currentIndex) => {
-      if (currentIndex <= 0) {
-        return maxSlideIndex;
-      }
-
-      return Math.max(0, currentIndex - cardsPerView);
-    });
-  };
+  // Show only first 8 members for landing page
+  const displayMembers = uniqueTeamMembers.slice(0, 8);
 
   const viewFullTeam = () => {
-    navigate("/Team");
+    navigate("/team");
     window.scrollTo(0, 0);
   };
 
   return (
-    <section className="bg-[#00163A] text-white px-4 sm:px-6 py-16">
+    <section className="relative bg-white px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-10">
-          <h2 className="text-3xl font-bold mb-2 ml-4 sm:ml-12">Our team</h2>
-          <p className="text-xl text-gray-300 ml-4 sm:ml-12">
-            Meet Our Amazing Team Members
-          </p>
-
-          {/* Team Filter Buttons */}
-          <div className="flex justify-start flex-wrap gap-2 sm:gap-4 mt-6 mb-6 ml-4 sm:ml-12">
-            {teams.map((team) => (
-              <button
-                key={team}
-                onClick={() => setActiveTeam(team)}
-                className={`px-2 py-1 sm:px-4 sm:py-2 rounded-full border text-sm sm:text-lg font-medium transition cursor-pointer hover:bg-white hover:text-[#00163A] ${
-                  activeTeam === team
-                    ? "bg-white text-[#00163A]"
-                    : "bg-transparent text-white border-white"
-                }`}
-              >
-                {team}
-              </button>
-            ))}
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <div className="space-y-6">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#021640] leading-tight tracking-tight">
+              Our Team
+            </h2>
+            <p className="text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
+              Meet our amazing team members who drive innovation and excellence
+              in mechanical engineering through their dedication and expertise.
+            </p>
           </div>
 
-          <button
-            onClick={viewFullTeam}
-            className="mt-4 border border-white text-white py-2 px-4 ml-4 sm:ml-12 rounded hover:bg-white hover:text-[#00163A] transition-all duration-300 cursor-pointer"
-          >
-            View all team members
-          </button>
+          <div className="pt-8">
+            <button
+              onClick={viewFullTeam}
+              className="bg-[#021640] hover:bg-[#021640]/90 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-lg"
+            >
+              View all Team Members
+            </button>
+          </div>
         </div>
 
-        <div className="relative">
-          <button
-            onClick={showPreviousMembers}
-            className="absolute left-0 top-1/3 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow hover:shadow-lg hover:scale-110 cursor-pointer transition-all duration-200"
-            aria-label="View previous team members"
-          >
-            <ArrowLeft className="w-6 h-6" color="#00163A" />
-          </button>
+        {/* Team Carousel */}
+        <Swiper
+          modules={[Autoplay, Pagination]}
+          spaceBetween={32}
+          slidesPerView={1}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          pagination={{
+            clickable: true,
+            bulletClass: "swiper-pagination-bullet",
+            bulletActiveClass: "swiper-pagination-bullet-active",
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 4,
+            },
+          }}
+          loop={true}
+          className="team-swiper"
+        >
+          {displayMembers.map((member, index) => (
+            <SwiperSlide key={index}>
+              <div className="bg-white border border-gray-200 hover:border-[#021640]/30 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group overflow-hidden h-full">
+                {/* Image */}
+                <div className="relative overflow-hidden">
+                  <img
+                    src={
+                      member.img ||
+                      "https://via.placeholder.com/300x300?text=Photo+Coming+Soon"
+                    }
+                    alt={member.name}
+                    className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 ring-1 ring-black/10"></div>
+                </div>
 
-          <div className="overflow-hidden mx-12">
-            <div
-              className="flex transition-transform duration-700 ease-in-out"
-              style={{
-                transform: `translateX(-${currentSlideIndex * (100 / cardsPerView)}%)`,
-              }}
-            >
-              {filteredTeamMembers.map((teamMember, memberIndex) => (
-                <div
-                  key={`team-member-${memberIndex}`}
-                  className="flex-shrink-0 px-2"
-                  style={{ width: `${100 / cardsPerView}%` }}
-                >
-                  <div className="bg-[#00163A] rounded-lg hover:-translate-y-2 hover:shadow-2xl transition-transform duration-300">
-                    <div className="relative overflow-hidden rounded-lg">
-                      <img
-                        src={teamMember.img}
-                        alt={`${teamMember.name} - ${teamMember.title}`}
-                        className="w-full h-72 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
+                {/* Content */}
+                <div className="p-6 space-y-3">
+                  <div>
+                    <h3 className="font-bold text-lg text-[#021640] leading-tight">
+                      {member.name || "Full Name"}
+                    </h3>
+                    {member.title && (
+                      <p className="text-sm font-medium text-gray-600">
+                        {member.title}
+                      </p>
+                    )}
+                    {member.team && (
+                      <p className="text-sm text-gray-500">{member.team}</p>
+                    )}
+                  </div>
 
-                    <div className="mt-3 px-2">
-                      <p className="font-semibold text-white mb-1 text-lg">
-                        {teamMember.name}
-                      </p>
-                      <p className="text-base text-gray-300 mb-1">
-                        {teamMember.title}
-                      </p>
-                      <p className="text-base text-gray-300">
-                        {teamMember.team}
-                      </p>
-                      <p className="text-sm text-gray-400 mt-2 line-clamp-3">
-                        {teamMember.description}
-                      </p>
-
-                      <div className="flex gap-3 mt-3 text-white text-lg">
-                        {teamMember.linkedin && (
-                          <a
-                            href={teamMember.linkedin}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-blue-400 hover:scale-110 cursor-pointer transition-all duration-200"
-                            aria-label={`Visit ${teamMember.name}'s LinkedIn profile`}
-                          >
-                            <FaLinkedin />
-                          </a>
-                        )}
-                        {teamMember.twitter && (
-                          <a
-                            href={teamMember.twitter}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-blue-400 hover:scale-110 cursor-pointer transition-all duration-200"
-                            aria-label={`Visit ${teamMember.name}'s Twitter profile`}
-                          >
-                            <FaXTwitter />
-                          </a>
-                        )}
-                      </div>
-                    </div>
+                  {/* Social Links */}
+                  <div className="flex justify-start pt-2">
+                    {member.linkedin && (
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center w-10 h-10 bg-gray-100 hover:bg-[#021640] text-gray-600 hover:text-white rounded-full transition-all duration-300 hover:scale-110"
+                      >
+                        <FaLinkedin size={16} />
+                      </a>
+                    )}
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          <button
-            onClick={showNextMembers}
-            className="absolute right-0 top-1/3 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow hover:shadow-lg hover:scale-110 cursor-pointer transition-all duration-200"
-            aria-label="View next team members"
-          >
-            <ArrowRight className="w-6 h-6" color="#00163A" />
-          </button>
-        </div>
+                {/* Accent line */}
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#021640] to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-        <div className="mt-16">
-          <h3 className="text-xl font-bold mb-1 ml-4 sm:ml-12">
-            Join Us Today!
-          </h3>
-          <p className="text-base text-gray-300 mb-3 ml-4 sm:ml-12">
-            Ready to be part of our amazing team? We're always looking for
-            talented individuals who share our passion.
-          </p>
-          <button className="border border-white text-white py-2 px-4 ml-4 sm:ml-12 rounded hover:bg-white hover:text-[#00163A] transition-all duration-300 cursor-pointer">
-            Apply here
-          </button>
-        </div>
+        {/* Custom Pagination Styles */}
+        <style jsx global>{`
+          .team-swiper .swiper-pagination {
+            position: relative !important;
+            margin-top: 2rem;
+          }
+
+          .team-swiper .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: #e5e7eb;
+            opacity: 1;
+            transition: all 0.3s ease;
+          }
+
+          .team-swiper .swiper-pagination-bullet-active {
+            background: #021640;
+            transform: scale(1.2);
+          }
+        `}</style>
       </div>
     </section>
   );

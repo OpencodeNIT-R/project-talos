@@ -54,7 +54,7 @@ const EventCard = ({ title, description, images, date, location, status }) => {
 
   return (
     <div
-      className="bg-white rounded-xl shadow-md hover:shadow-lg overflow-hidden border border-gray-100 transition-all duration-300 hover:-translate-y-1 max-w-sm w-full"
+      className="bg-white border border-gray-200 hover:border-[#021640]/30 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -69,6 +69,7 @@ const EventCard = ({ title, description, images, date, location, status }) => {
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
               />
+              <div className="absolute inset-0 ring-1 ring-black/10"></div>
 
               {/* Navigation Controls (show on hover if multiple images) */}
               {images.length > 1 && (
@@ -95,7 +96,7 @@ const EventCard = ({ title, description, images, date, location, status }) => {
               {status && (
                 <div className="absolute top-3 left-3">
                   <span
-                    className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(status)}`}
+                    className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(status)}`}
                   >
                     {status}
                   </span>
@@ -132,36 +133,40 @@ const EventCard = ({ title, description, images, date, location, status }) => {
       </div>
 
       {/* Content Section */}
-      <div className="p-5">
-        <h3 className="text-lg font-semibold text-[#0B2044] mb-2 line-clamp-2">
-          {title || "Event Title"}
-        </h3>
-
-        <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-          {description || "Event description will be displayed here."}
-        </p>
+      <div className="p-6 space-y-4">
+        <div>
+          <h3 className="font-bold text-lg text-[#021640] leading-tight mb-2 line-clamp-2">
+            {title || "Event Title"}
+          </h3>
+          <p className="text-sm text-gray-600 line-clamp-3">
+            {description || "Event description will be displayed here."}
+          </p>
+        </div>
 
         {/* Event Meta Information */}
-        <div className="space-y-2 mb-4">
+        <div className="space-y-2">
           {date && (
-            <div className="flex items-center text-xs text-gray-500">
-              <FaCalendar className="w-3 h-3 mr-2" />
+            <div className="flex items-center text-sm text-gray-500">
+              <FaCalendar className="w-3 h-3 mr-2 text-[#021640]" />
               <span>{date}</span>
             </div>
           )}
           {location && (
-            <div className="flex items-center text-xs text-gray-500">
-              <FaMapMarkerAlt className="w-3 h-3 mr-2" />
+            <div className="flex items-center text-sm text-gray-500">
+              <FaMapMarkerAlt className="w-3 h-3 mr-2 text-[#021640]" />
               <span>{location}</span>
             </div>
           )}
         </div>
 
         {/* Action Button */}
-        <button className="w-full px-4 py-2 bg-[#0B2044] text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200">
+        <button className="w-full bg-[#021640] text-white px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 hover:bg-[#021640]/90 hover:shadow-lg">
           View Details
         </button>
       </div>
+
+      {/* Accent line */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#021640] to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
     </div>
   );
 };

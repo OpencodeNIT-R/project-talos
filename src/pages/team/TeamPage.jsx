@@ -1,7 +1,17 @@
 import { useState } from "react";
-import { FaLinkedin, FaXTwitter, FaUsers, FaRocket } from "react-icons/fa6";
+import {
+  FaLinkedin,
+  FaXTwitter,
+  FaUsers,
+  FaRocket,
+  FaChevronDown,
+} from "react-icons/fa6";
 import { FaDraftingCompass } from "react-icons/fa";
 import teamMembers from "../../config/teammate";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 // Enhanced Image Component with loading states
 const TeamMemberImage = ({ src, alt }) => {
@@ -20,7 +30,9 @@ const TeamMemberImage = ({ src, alt }) => {
   return (
     <div className="relative">
       {/* Loading skeleton */}
-      {isLoading && <div className="absolute inset-0 shimmer rounded-xl"></div>}
+      {isLoading && (
+        <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-t-xl"></div>
+      )}
 
       {/* Actual image */}
       <img
@@ -31,21 +43,19 @@ const TeamMemberImage = ({ src, alt }) => {
               "https://via.placeholder.com/300x300?text=Photo+Coming+Soon"
         }
         alt={alt}
-        className={`w-full h-64 object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-105 ${
+        className={`w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105 ${
           isLoading ? "opacity-0" : "opacity-100"
         }`}
         onLoad={handleImageLoad}
         onError={handleImageError}
       />
-
-      {/* Gradient overlay for better text readability if needed */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     </div>
   );
 };
 
 const TeamPage = () => {
   const [activeTeam, setActiveTeam] = useState("All");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const teams = [
     { name: "All" },
@@ -84,167 +94,230 @@ const TeamPage = () => {
       : teamMembers.filter((member) => member.team === activeTeam);
 
   return (
-    <section className="bg-white text-black min-h-screen">
-      {/* Add custom animations */}
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes shimmer {
-          0% {
-            background-position: -200px 0;
-          }
-          100% {
-            background-position: calc(200px + 100%) 0;
-          }
-        }
-
-        .shimmer {
-          background: linear-gradient(
-            90deg,
-            #f0f0f0 25%,
-            #e0e0e0 50%,
-            #f0f0f0 75%
-          );
-          background-size: 200px 100%;
-          animation: shimmer 1.5s infinite;
-        }
-      `}</style>
-
+    <section className="relative bg-white min-h-screen px-4 sm:px-6 md:px-10 lg:px-16 pt-[80px] pb-16 sm:pb-20">
       {/* Header Section */}
-      <div className="text-center px-4 max-w-4xl mx-auto scroll-mt-24 pt-20 lg:pt-24 pb-12">
-        <h2 className="text-4xl sm:text-5xl font-bold text-[#021640] mb-6">
-          Meet Our Team
-        </h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Discover the passionate individuals driving innovation and excellence
-          at ASME NIT Rourkela
-        </p>
-      </div>
-
-      {/* Team Filter Buttons */}
-      <div className="flex justify-center flex-wrap gap-4 mb-12 px-4">
-        {teams.map((team) => (
-          <button
-            key={team.name}
-            onClick={() => setActiveTeam(team.name)}
-            className={`relative px-8 py-3 rounded-full border text-base font-medium transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:scale-105 overflow-hidden ${
-              activeTeam === team.name
-                ? "bg-[#021640] text-white border-[#021640] shadow-lg"
-                : "bg-white text-[#021640] border-gray-300 hover:border-[#021640] hover:text-[#021640] hover:bg-gray-50"
-            }`}
-          >
-            {/* Active button glow effect */}
-            {activeTeam === team.name && (
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-[#021640]/20 rounded-full"></div>
-            )}
-            <span className="relative z-10">{team.name}</span>
-          </button>
-        ))}
-      </div>
-
-      {/* Team Description */}
-      {activeTeam !== "All" && teamDescriptions[activeTeam] && (
-        <div className="max-w-4xl mx-auto px-4 mb-12">
-          <div className="bg-gray-50 rounded-lg p-8 border border-gray-100">
-            <h3 className="text-xl font-semibold text-[#021640] mb-4 text-center">
-              About {teamDescriptions[activeTeam].title}
-            </h3>
-            <p className="text-gray-700 leading-relaxed text-center">
-              {teamDescriptions[activeTeam].description}
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16 pt-8">
+          <div className="space-y-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#021640] leading-tight tracking-tight">
+              Meet Our Team
+            </h1>
+            <p className="text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
+              Discover the passionate individuals driving innovation and
+              excellence at ASME NIT Rourkela through their dedication and
+              expertise.
             </p>
           </div>
         </div>
-      )}
 
-      {/* Team Members Grid */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        {/* Team Filter - Desktop Buttons & Mobile Dropdown */}
+        <div className="mb-16">
+          {/* Desktop Filter Buttons */}
+          <div className="hidden md:flex justify-center flex-wrap gap-4">
+            {teams.map((team) => (
+              <button
+                key={team.name}
+                onClick={() => setActiveTeam(team.name)}
+                className={`px-8 py-3 rounded-lg border-2 text-base font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 ${
+                  activeTeam === team.name
+                    ? "bg-[#021640] text-white border-[#021640] shadow-lg"
+                    : "bg-white text-[#021640] border-[#021640] hover:bg-[#021640] hover:text-white"
+                }`}
+              >
+                {team.name}
+              </button>
+            ))}
+          </div>
+
+          {/* Mobile Dropdown Filter */}
+          <div className="md:hidden flex justify-center">
+            <div className="relative w-full max-w-xs">
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="w-full px-6 py-3 bg-white border-2 border-[#021640] text-[#021640] rounded-lg font-semibold text-base flex items-center justify-between transition-all duration-300 hover:bg-[#021640] hover:text-white"
+              >
+                <span>{activeTeam}</span>
+                <FaChevronDown
+                  className={`transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+
+              {isDropdownOpen && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white border-2 border-[#021640] rounded-lg shadow-lg z-10 overflow-hidden">
+                  {teams.map((team) => (
+                    <button
+                      key={team.name}
+                      onClick={() => {
+                        setActiveTeam(team.name);
+                        setIsDropdownOpen(false);
+                      }}
+                      className={`w-full px-6 py-3 text-left text-base font-medium transition-all duration-200 hover:bg-[#021640] hover:text-white ${
+                        activeTeam === team.name
+                          ? "bg-[#021640] text-white"
+                          : "text-[#021640] border-b border-gray-200 last:border-b-0"
+                      }`}
+                    >
+                      {team.name}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Team Description */}
+        {activeTeam !== "All" && teamDescriptions[activeTeam] && (
+          <div className="max-w-4xl mx-auto mb-16">
+            <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-200 shadow-md">
+              <h3 className="text-2xl font-bold text-[#021640] mb-6 text-center">
+                About {teamDescriptions[activeTeam].title}
+              </h3>
+              <p className="text-lg text-gray-700 leading-relaxed text-center">
+                {teamDescriptions[activeTeam].description}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Team Members - Mobile Carousel & Desktop Grid */}
         {filteredMembers.length > 0 ? (
           <>
-            <div className="text-center mb-10">
-              <h3 className="text-2xl font-semibold text-[#021640] mb-2">
-                {activeTeam === "All"
-                  ? "All Team Members"
-                  : `${activeTeam} Members`}
-              </h3>
-              <div className="w-16 h-0.5 bg-[#021640] mx-auto"></div>
+            {/* Mobile Carousel */}
+            <div className="md:hidden">
+              <Swiper
+                modules={[Autoplay, Pagination]}
+                spaceBetween={20}
+                slidesPerView={1}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }}
+                pagination={{
+                  clickable: true,
+                  bulletClass: "swiper-pagination-bullet",
+                  bulletActiveClass: "swiper-pagination-bullet-active",
+                }}
+                breakpoints={{
+                  480: {
+                    slidesPerView: 1.2,
+                    spaceBetween: 16,
+                  },
+                  640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                  },
+                }}
+                loop={filteredMembers.length > 1}
+                className="team-mobile-swiper"
+              >
+                {filteredMembers.map((member, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="bg-white border border-gray-200 hover:border-[#021640]/30 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group overflow-hidden h-full">
+                      {/* Image */}
+                      <div className="relative overflow-hidden">
+                        <TeamMemberImage src={member.img} alt={member.name} />
+                        <div className="absolute inset-0 ring-1 ring-black/10"></div>
+
+                        {/* Team badge for "All" view */}
+                        {member.team && activeTeam === "All" && (
+                          <div className="absolute top-3 right-3 bg-[#021640]/90 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full font-medium">
+                            {member.team}
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-6 space-y-4">
+                        <div className="text-center">
+                          <h3 className="font-bold text-lg text-[#021640] leading-tight mb-2">
+                            {member.name || "Full Name"}
+                          </h3>
+                          {member.title && (
+                            <p className="text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full inline-block">
+                              {member.title}
+                            </p>
+                          )}
+                        </div>
+
+                        {/* Social Links */}
+                        <div className="flex justify-center pt-2">
+                          {member.linkedin ? (
+                            <a
+                              href={member.linkedin}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center w-10 h-10 bg-gray-100 hover:bg-[#021640] text-gray-600 hover:text-white rounded-full transition-all duration-300 hover:scale-110"
+                              title={`Connect with ${member.name} on LinkedIn`}
+                            >
+                              <FaLinkedin size={16} />
+                            </a>
+                          ) : (
+                            <div className="text-gray-400 text-sm italic">
+                              Connect soon
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Accent line */}
+                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#021640] to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6 lg:gap-8">
+            {/* Desktop Grid */}
+            <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
               {filteredMembers.map((member, index) => (
                 <div
                   key={index}
-                  className="group relative flex flex-col bg-white rounded-2xl shadow-md border border-gray-100 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 hover:border-[#021640]/20 overflow-hidden animate-fade-in"
+                  className="bg-white border border-gray-200 hover:border-[#021640]/30 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group overflow-hidden"
                   style={{
                     animationDelay: `${index * 100}ms`,
-                    opacity: 0,
-                    animation: `fadeInUp 0.6s ease-out ${index * 100}ms forwards`,
                   }}
                 >
-                  {/* Background gradient overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#021640]/5 to-blue-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                  {/* Image */}
+                  <div className="relative overflow-hidden">
+                    <TeamMemberImage src={member.img} alt={member.name} />
+                    <div className="absolute inset-0 ring-1 ring-black/10"></div>
 
-                  {/* Decorative top accent */}
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#021640] via-blue-500 to-[#021640] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-
-                  {/* Image section - no padding */}
-                  <div className="relative z-10 w-full">
-                    <div className="relative overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-                      {/* Image container with enhanced styling */}
-                      <TeamMemberImage src={member.img} alt={member.name} />
-
-                      {/* Floating badge for team if showing all teams */}
-                      {member.team && activeTeam === "All" && (
-                        <div className="absolute top-3 right-3 bg-[#021640]/90 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full font-medium transform translate-x-full group-hover:translate-x-0 transition-transform duration-300">
-                          {member.team}
-                        </div>
-                      )}
-                    </div>
+                    {/* Team badge for "All" view */}
+                    {member.team && activeTeam === "All" && (
+                      <div className="absolute top-3 right-3 bg-[#021640]/90 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full font-medium">
+                        {member.team}
+                      </div>
+                    )}
                   </div>
 
-                  {/* Content section with padding */}
-                  <div className="relative z-10 p-6 space-y-3 flex-grow flex flex-col justify-between text-center">
-                    <div>
-                      <h3 className="font-bold text-xl text-[#021640] mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                  {/* Content */}
+                  <div className="p-6 space-y-4">
+                    <div className="text-center">
+                      <h3 className="font-bold text-lg text-[#021640] leading-tight mb-2">
                         {member.name || "Full Name"}
                       </h3>
                       {member.title && (
-                        <div className="inline-block bg-gray-100 group-hover:bg-blue-50 text-gray-700 group-hover:text-[#021640] text-sm font-semibold px-4 py-2 rounded-full transition-all duration-300">
+                        <p className="text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full inline-block">
                           {member.title}
-                        </div>
+                        </p>
                       )}
                     </div>
 
-                    {/* Enhanced social media section */}
-                    <div className="flex justify-center items-center gap-3 pt-4">
-                      {member.linkedin && (
+                    {/* Social Links */}
+                    <div className="flex justify-center pt-2">
+                      {member.linkedin ? (
                         <a
                           href={member.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group/link relative flex items-center justify-center w-12 h-12 bg-gradient-to-br from-gray-100 to-gray-200 hover:from-[#0077B5] hover:to-[#005885] text-gray-600 hover:text-white rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg transform-gpu"
+                          className="flex items-center justify-center w-10 h-10 bg-gray-100 hover:bg-[#021640] text-gray-600 hover:text-white rounded-full transition-all duration-300 hover:scale-110"
                           title={`Connect with ${member.name} on LinkedIn`}
                         >
-                          <FaLinkedin
-                            size={20}
-                            className="transition-all duration-300 group-hover/link:scale-110"
-                          />
-
-                          {/* Ripple effect on hover */}
-                          <div className="absolute inset-0 rounded-full bg-[#0077B5] opacity-0 group-hover/link:opacity-20 group-hover/link:scale-150 transition-all duration-300"></div>
+                          <FaLinkedin size={16} />
                         </a>
-                      )}
-
-                      {/* Placeholder for future social media links */}
-                      {!member.linkedin && (
+                      ) : (
                         <div className="text-gray-400 text-sm italic">
                           Connect soon
                         </div>
@@ -252,12 +325,8 @@ const TeamPage = () => {
                     </div>
                   </div>
 
-                  {/* Floating particles effect */}
-                  <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 animate-pulse"></div>
-                  <div
-                    className="absolute top-3/4 right-1/4 w-1 h-1 bg-[#021640] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 animate-pulse"
-                    style={{ animationDelay: "0.5s" }}
-                  ></div>
+                  {/* Accent line */}
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#021640] to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                 </div>
               ))}
             </div>
@@ -265,11 +334,11 @@ const TeamPage = () => {
         ) : (
           <div className="text-center py-20">
             <div className="max-w-md mx-auto">
-              <div className="text-6xl text-gray-300 mb-4">👥</div>
-              <h3 className="text-2xl font-semibold text-gray-700 mb-2">
+              <div className="text-6xl text-gray-300 mb-6">👥</div>
+              <h3 className="text-2xl font-semibold text-gray-700 mb-4">
                 No Team Members Found
               </h3>
-              <p className="text-gray-500">
+              <p className="text-lg text-gray-500">
                 There are currently no members in the {activeTeam} team.
                 {activeTeam !== "All" &&
                   " Try selecting a different team or check back later."}
@@ -278,6 +347,27 @@ const TeamPage = () => {
           </div>
         )}
       </div>
+
+      {/* Custom Swiper Styles */}
+      <style jsx global>{`
+        .team-mobile-swiper .swiper-pagination {
+          position: relative !important;
+          margin-top: 2rem;
+        }
+
+        .team-mobile-swiper .swiper-pagination-bullet {
+          width: 12px;
+          height: 12px;
+          background: #e5e7eb;
+          opacity: 1;
+          transition: all 0.3s ease;
+        }
+
+        .team-mobile-swiper .swiper-pagination-bullet-active {
+          background: #021640;
+          transform: scale(1.2);
+        }
+      `}</style>
     </section>
   );
 };

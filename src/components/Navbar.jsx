@@ -43,47 +43,42 @@ export default function Navbar() {
   return (
     <header
       className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/90 backdrop-blur-md shadow-lg" : "bg-transparent"
+        scrolled
+          ? "bg-white shadow-lg border-b border-gray-200"
+          : "bg-white shadow-md border-b border-gray-100"
       }`}
     >
-      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-3 flex items-center justify-between text-black font-['Helvetica'] font-normal text-[20px] leading-[100%] tracking-[-0.015em]">
-        {/* Logo Section */}
+      <div className="w-full mx-auto px-4 sm:px-6 md:px-10 lg:px-16 py-4 flex items-center justify-between">
+        {/* Logo Section - Left */}
         <div className="flex items-center flex-shrink-0">
           <img
             src={siteConfig.navigation.logo}
             alt="Logo"
-            className="h-12 sm:h-14 lg:h-16 w-auto"
+            className="h-10 sm:h-12 lg:h-14 w-auto"
           />
         </div>
 
-        {/* Desktop Navigation - Hidden on mobile and tablet */}
-        <nav className="hidden xl:flex absolute left-1/2 transform -translate-x-1/2 justify-center space-x-6 px-6 py-2">
-          {siteConfig.navigation.links.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-base lg:text-lg font-medium transition-colors hover:text-[rgba(55,115,236,1)] whitespace-nowrap"
-            >
-              {item.name}
-            </a>
-          ))}
+        {/* Desktop Navigation - Center */}
+        <nav className="hidden xl:flex items-center justify-center flex-1 mx-8">
+          <div className="flex space-x-8">
+            {siteConfig.navigation.links.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-base font-medium text-gray-700 hover:text-[#021640] transition-colors duration-300 whitespace-nowrap px-4 py-2 rounded-lg hover:bg-gray-100"
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
         </nav>
 
-        {/* Desktop Buttons - Hidden on mobile and tablet */}
-        <div className="hidden xl:flex items-center space-x-3 flex-shrink-0">
+        {/* Desktop Buttons - Right */}
+        <div className="hidden xl:flex items-center space-x-4 flex-shrink-0">
           <Button
-            backgroundColor="white"
-            textColor="black"
-            className="border border-black px-6 py-3 text-sm font-medium rounded-md transition-all duration-300 ease-in-out hover:bg-[rgba(55,115,236,1)] hover:text-white hover:border-[rgba(55,115,236,1)] hover:shadow-lg hover:shadow-[rgba(55,115,236,0.4)] hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap"
-            onClick={handleJoinUsClick}
-          >
-            Join Us
-          </Button>
-
-          <Button
-            backgroundColor="rgba(6,25,70,1)"
+            backgroundColor="#021640"
             textColor="white"
-            className="px-6 py-3 text-sm font-medium rounded-md transition-all duration-300 ease-in-out hover:bg-white hover:text-[rgba(6,25,70,1)] hover:border hover:border-[rgba(6,25,70,1)] hover:shadow-lg hover:shadow-[rgba(6,25,70,0.4)] hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap"
+            className="bg-[#021640] text-white px-6 py-2 text-sm font-semibold rounded-lg transition-all duration-300 hover:bg-[#021640]/90 whitespace-nowrap"
             onClick={handleContactUsClick}
           >
             Contact Us
@@ -92,12 +87,16 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className="xl:hidden flex items-center justify-center w-10 h-10 rounded-md hover:bg-black/10 transition-colors duration-200"
+          className={`xl:hidden flex items-center justify-center w-10 h-10 rounded-lg transition-all duration-300 ${
+            scrolled
+              ? "hover:bg-gray-100 text-gray-700"
+              : "hover:bg-white/20 text-[#021640]"
+          }`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
           <svg
-            className="w-6 h-6 text-black"
+            className="w-6 h-6"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -123,25 +122,24 @@ export default function Navbar() {
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-full pointer-events-none"
         }`}
-        style={{ willChange: "opacity, transform" }}
       >
         {/* Background Overlay */}
         <div
-          className="absolute inset-0 bg-[rgba(32,53,103,0.95)] backdrop-blur-sm"
+          className="absolute inset-0 bg-[#021640]/95 backdrop-blur-sm"
           onClick={() => setMobileMenuOpen(false)}
         />
 
         {/* Menu Content */}
-        <div className="relative bg-[rgba(32,53,103,0.98)] backdrop-blur-md h-full overflow-y-auto">
+        <div className="relative bg-[#021640] h-full overflow-y-auto">
           {/* Header with Close Button */}
-          <div className="flex justify-between items-center p-4 sm:p-6 border-b border-white/20">
+          <div className="flex justify-between items-center p-6 border-b border-white/20">
             <img
               src={siteConfig.navigation.logo}
               alt="Logo"
-              className="h-10 sm:h-12 w-auto"
+              className="h-10 w-auto"
             />
             <button
-              className="text-white hover:text-blue-300 transition-colors duration-200 p-2 rounded-md hover:bg-white/10"
+              className="text-white hover:text-gray-300 transition-colors duration-200 p-2 rounded-lg hover:bg-white/10"
               onClick={() => setMobileMenuOpen(false)}
               aria-label="Close menu"
             >
@@ -162,13 +160,13 @@ export default function Navbar() {
           </div>
 
           {/* Navigation Links */}
-          <nav className="px-4 sm:px-6 py-8">
-            <div className="space-y-1">
+          <nav className="px-6 py-8">
+            <div className="space-y-2">
               {siteConfig.navigation.links.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block w-full py-4 px-4 text-lg sm:text-xl font-medium text-white hover:text-blue-300 hover:bg-white/10 rounded-lg transition-all duration-200 text-center border-b border-white/10 last:border-b-0"
+                  className="block w-full py-4 px-6 text-lg font-medium text-white hover:text-gray-300 hover:bg-white/10 rounded-lg transition-all duration-200 text-center"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}
@@ -178,11 +176,11 @@ export default function Navbar() {
           </nav>
 
           {/* Action Buttons */}
-          <div className="px-4 sm:px-6 pb-8 space-y-4">
+          <div className="px-6 pb-8 space-y-4">
             <Button
               backgroundColor="transparent"
               textColor="white"
-              className="w-full border-2 border-white px-6 py-4 text-center text-base sm:text-lg font-medium rounded-lg transition-all duration-300 hover:bg-white hover:text-[rgba(6,25,70,1)] hover:shadow-lg hover:shadow-white/30 hover:-translate-y-0.5 active:translate-y-0"
+              className="w-full border-2 border-white text-white px-6 py-4 text-center text-lg font-medium rounded-lg transition-all duration-300 hover:bg-white hover:text-[#021640]"
               onClick={() => {
                 handleJoinUsClick();
                 setMobileMenuOpen(false);
@@ -193,8 +191,8 @@ export default function Navbar() {
 
             <Button
               backgroundColor="white"
-              textColor="rgba(6,25,70,1)"
-              className="w-full px-6 py-4 text-center text-base sm:text-lg font-medium rounded-lg transition-all duration-300 hover:bg-[rgba(6,25,70,1)] hover:text-white hover:shadow-lg hover:shadow-[rgba(6,25,70,0.4)] hover:-translate-y-0.5 active:translate-y-0"
+              textColor="#021640"
+              className="w-full bg-white text-[#021640] px-6 py-4 text-center text-lg font-medium rounded-lg transition-all duration-300 hover:bg-gray-100"
               onClick={() => {
                 handleContactUsClick();
                 setMobileMenuOpen(false);

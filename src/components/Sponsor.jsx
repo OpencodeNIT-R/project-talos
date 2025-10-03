@@ -1,153 +1,104 @@
-import { useRef, useEffect, useState } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import sponsors from "../config/sponsors";
-import "./sponsor.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 const SponsorsSection = () => {
-  const containerRef = useRef(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const currentIndex = useRef(0);
-  const [itemsToShow, setItemsToShow] = useState(1);
-
-  useEffect(() => {
-    const updateItemsToShow = () => {
-      if (window.innerWidth >= 1024) {
-        setItemsToShow(3);
-      } else if (window.innerWidth >= 768) {
-        setItemsToShow(2);
-      } else if (window.innerWidth >= 640) {
-        setItemsToShow(2);
-      } else {
-        setItemsToShow(1);
-      }
-    };
-
-    updateItemsToShow();
-    window.addEventListener("resize", updateItemsToShow);
-    return () => window.removeEventListener("resize", updateItemsToShow);
-  }, []);
-
-  const scrollToIndex = (index) => {
-    if (!containerRef.current) return;
-
-    const itemWidth = containerRef.current.scrollWidth / sponsors.length;
-    const scrollPosition = itemWidth * itemsToShow * index;
-
-    containerRef.current.scrollTo({
-      left: scrollPosition,
-      behavior: "smooth",
-    });
-  };
-
-  const getTotalPages = () => {
-    return Math.ceil(sponsors.length / itemsToShow);
-  };
-
-  const goToNext = () => {
-    const totalPages = getTotalPages();
-    currentIndex.current = (currentIndex.current + 1) % totalPages;
-    scrollToIndex(currentIndex.current);
-  };
-
-  const goToPrevious = () => {
-    const totalPages = getTotalPages();
-    currentIndex.current =
-      currentIndex.current === 0 ? totalPages - 1 : currentIndex.current - 1;
-    scrollToIndex(currentIndex.current);
-  };
-
-  useEffect(() => {
-    if (isPaused) return;
-
-    const autoPlay = setInterval(() => {
-      goToNext();
-    }, 4000);
-
-    return () => clearInterval(autoPlay);
-  }, [isPaused, itemsToShow]);
-
-  const handleMouseEnter = () => setIsPaused(true);
-  const handleMouseLeave = () => setIsPaused(false);
-
-  const handlePrevClick = () => {
-    goToPrevious();
-    setIsPaused(true);
-    setTimeout(() => setIsPaused(false), 200);
-  };
-
-  const handleNextClick = () => {
-    goToNext();
-    setIsPaused(true);
-    setTimeout(() => setIsPaused(false), 200);
-  };
-
   return (
-    <section className="bg-white py-20 relative overflow-hidden">
+    <section className="relative bg-white px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20">
       {/* Subtle Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 right-10 w-72 h-72 bg-blue-50 rounded-full opacity-40 blur-2xl"></div>
         <div className="absolute bottom-20 left-10 w-72 h-72 bg-indigo-50 rounded-full opacity-40 blur-2xl"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-            Our Trusted Partners
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 mx-auto mb-6 rounded-full"></div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Proudly supported by amazing organizations who believe in our
-            mission and help us drive innovation forward.
-          </p>
+          <div className="space-y-6">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#021640] leading-tight tracking-tight">
+              Our Trusted Partners
+            </h2>
+            <p className="text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
+              Proudly supported by amazing organizations who believe in our
+              mission and help us drive innovation forward.
+            </p>
+          </div>
         </div>
 
         {/* Sponsors Carousel */}
-        <div
-          className="relative px-16"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+        <Swiper
+          modules={[Autoplay, Pagination]}
+          spaceBetween={32}
+          slidesPerView={1}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          pagination={{
+            clickable: true,
+            bulletClass: "swiper-pagination-bullet",
+            bulletActiveClass: "swiper-pagination-bullet-active",
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 4,
+            },
+          }}
+          loop={true}
+          className="sponsors-swiper"
         >
-          {/* Navigation Buttons */}
-          <button
-            onClick={handlePrevClick}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 border border-gray-200 rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-200"
-          >
-            <ArrowLeft className="w-5 h-5 text-gray-600" />
-          </button>
-
-          <div
-            ref={containerRef}
-            className="flex overflow-x-auto scroll-smooth gap-8"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {sponsors.map((sponsor, index) => (
+          {sponsors.map((sponsor, index) => (
+            <SwiperSlide key={index}>
               <a
-                key={index}
                 href={sponsor.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-shrink-0"
-                style={{ width: `${100 / itemsToShow}%` }}
+                className="block group"
               >
-                <div className="h-64 bg-gradient-to-br from-white to-gray-50/50 flex items-center justify-center rounded-2xl border border-gray-100 hover:border-blue-200 hover:shadow-lg transition-all duration-300 p-12 group">
+                <div className="h-64 bg-gradient-to-br from-white to-gray-50/50 flex items-center justify-center rounded-2xl border border-gray-200 hover:border-[#021640]/30 hover:shadow-lg transition-all duration-300 p-12 group-hover:-translate-y-1">
                   <img
                     src={sponsor.image}
                     alt={sponsor.name}
-                    className="max-h-32 max-w-full object-contain transition-all duration-300 group-hover:brightness-110"
+                    className="max-h-32 max-w-full object-contain transition-all duration-300 group-hover:brightness-110 group-hover:scale-105"
                   />
+
+                  {/* Accent line */}
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#021640] to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                 </div>
               </a>
-            ))}
-          </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-          <button
-            onClick={handleNextClick}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 border border-gray-200 rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-200"
-          >
-            <ArrowRight className="w-5 h-5 text-gray-600" />
-          </button>
-        </div>
+        {/* Custom Pagination Styles */}
+        <style jsx global>{`
+          .sponsors-swiper .swiper-pagination {
+            position: relative !important;
+            margin-top: 2rem;
+          }
+
+          .sponsors-swiper .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: #e5e7eb;
+            opacity: 1;
+            transition: all 0.3s ease;
+          }
+
+          .sponsors-swiper .swiper-pagination-bullet-active {
+            background: #021640;
+            transform: scale(1.2);
+          }
+        `}</style>
       </div>
     </section>
   );
