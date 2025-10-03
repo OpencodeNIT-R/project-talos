@@ -3,6 +3,47 @@ import { FaLinkedin, FaXTwitter, FaUsers, FaRocket } from "react-icons/fa6";
 import { FaDraftingCompass } from "react-icons/fa";
 import teamMembers from "../../config/teammate";
 
+// Enhanced Image Component with loading states
+const TeamMemberImage = ({ src, alt }) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
+
+  const handleImageError = () => {
+    setIsLoading(false);
+    setHasError(true);
+  };
+
+  return (
+    <div className="relative">
+      {/* Loading skeleton */}
+      {isLoading && <div className="absolute inset-0 shimmer rounded-xl"></div>}
+
+      {/* Actual image */}
+      <img
+        src={
+          hasError
+            ? "https://via.placeholder.com/300x300?text=Photo+Coming+Soon"
+            : src ||
+              "https://via.placeholder.com/300x300?text=Photo+Coming+Soon"
+        }
+        alt={alt}
+        className={`w-full h-64 object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-105 ${
+          isLoading ? "opacity-0" : "opacity-100"
+        }`}
+        onLoad={handleImageLoad}
+        onError={handleImageError}
+      />
+
+      {/* Gradient overlay for better text readability if needed */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    </div>
+  );
+};
+
 const TeamPage = () => {
   const [activeTeam, setActiveTeam] = useState("All");
 
@@ -44,6 +85,40 @@ const TeamPage = () => {
 
   return (
     <section className="bg-white text-black min-h-screen">
+      {/* Add custom animations */}
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes shimmer {
+          0% {
+            background-position: -200px 0;
+          }
+          100% {
+            background-position: calc(200px + 100%) 0;
+          }
+        }
+
+        .shimmer {
+          background: linear-gradient(
+            90deg,
+            #f0f0f0 25%,
+            #e0e0e0 50%,
+            #f0f0f0 75%
+          );
+          background-size: 200px 100%;
+          animation: shimmer 1.5s infinite;
+        }
+      `}</style>
+
       {/* Header Section */}
       <div className="text-center px-4 max-w-4xl mx-auto scroll-mt-24 pt-20 lg:pt-24 pb-12">
         <h2 className="text-4xl sm:text-5xl font-bold text-[#021640] mb-6">
@@ -56,18 +131,22 @@ const TeamPage = () => {
       </div>
 
       {/* Team Filter Buttons */}
-      <div className="flex justify-center flex-wrap gap-3 mb-12 px-4">
+      <div className="flex justify-center flex-wrap gap-4 mb-12 px-4">
         {teams.map((team) => (
           <button
             key={team.name}
             onClick={() => setActiveTeam(team.name)}
-            className={`px-6 py-3 rounded-full border text-base font-medium transition-all duration-300 cursor-pointer hover:shadow-md ${
+            className={`relative px-8 py-3 rounded-full border text-base font-medium transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:scale-105 overflow-hidden ${
               activeTeam === team.name
-                ? "bg-[#021640] text-white border-[#021640] shadow-md"
-                : "bg-white text-[#021640] border-gray-300 hover:border-[#021640] hover:text-[#021640]"
+                ? "bg-[#021640] text-white border-[#021640] shadow-lg"
+                : "bg-white text-[#021640] border-gray-300 hover:border-[#021640] hover:text-[#021640] hover:bg-gray-50"
             }`}
           >
-            {team.name}
+            {/* Active button glow effect */}
+            {activeTeam === team.name && (
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-[#021640]/20 rounded-full"></div>
+            )}
+            <span className="relative z-10">{team.name}</span>
           </button>
         ))}
       </div>
@@ -99,51 +178,86 @@ const TeamPage = () => {
               <div className="w-16 h-0.5 bg-[#021640] mx-auto"></div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6 lg:gap-8">
               {filteredMembers.map((member, index) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center text-center bg-white rounded-lg p-6 shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                  className="group relative flex flex-col bg-white rounded-2xl shadow-md border border-gray-100 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 hover:border-[#021640]/20 overflow-hidden animate-fade-in"
+                  style={{
+                    animationDelay: `${index * 100}ms`,
+                    opacity: 0,
+                    animation: `fadeInUp 0.6s ease-out ${index * 100}ms forwards`,
+                  }}
                 >
-                  <div className="w-full max-w-xs mb-4">
-                    <div className="overflow-hidden rounded-lg shadow-sm">
-                      <img
-                        src={
-                          member.img ||
-                          "https://via.placeholder.com/300x300?text=Photo+Coming+Soon"
-                        }
-                        alt={member.name}
-                        className="w-full h-64 object-cover transition-transform duration-300 hover:scale-105"
-                      />
+                  {/* Background gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#021640]/5 to-blue-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+
+                  {/* Decorative top accent */}
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#021640] via-blue-500 to-[#021640] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+
+                  {/* Image section - no padding */}
+                  <div className="relative z-10 w-full">
+                    <div className="relative overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                      {/* Image container with enhanced styling */}
+                      <TeamMemberImage src={member.img} alt={member.name} />
+
+                      {/* Floating badge for team if showing all teams */}
+                      {member.team && activeTeam === "All" && (
+                        <div className="absolute top-3 right-3 bg-[#021640]/90 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full font-medium transform translate-x-full group-hover:translate-x-0 transition-transform duration-300">
+                          {member.team}
+                        </div>
+                      )}
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <h3 className="font-semibold text-lg text-[#021640]">
-                      {member.name || "Full Name"}
-                    </h3>
-                    {member.title && (
-                      <p className="text-sm font-medium text-gray-600">
-                        {member.title}
-                      </p>
-                    )}
-                    {member.team && activeTeam === "All" && (
-                      <p className="text-sm text-gray-500">{member.team}</p>
-                    )}
+                  {/* Content section with padding */}
+                  <div className="relative z-10 p-6 space-y-3 flex-grow flex flex-col justify-between text-center">
+                    <div>
+                      <h3 className="font-bold text-xl text-[#021640] mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                        {member.name || "Full Name"}
+                      </h3>
+                      {member.title && (
+                        <div className="inline-block bg-gray-100 group-hover:bg-blue-50 text-gray-700 group-hover:text-[#021640] text-sm font-semibold px-4 py-2 rounded-full transition-all duration-300">
+                          {member.title}
+                        </div>
+                      )}
+                    </div>
 
-                    <div className="flex justify-center pt-3">
+                    {/* Enhanced social media section */}
+                    <div className="flex justify-center items-center gap-3 pt-4">
                       {member.linkedin && (
                         <a
                           href={member.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-2 text-gray-600 hover:text-[#021640] transition-colors duration-200"
+                          className="group/link relative flex items-center justify-center w-12 h-12 bg-gradient-to-br from-gray-100 to-gray-200 hover:from-[#0077B5] hover:to-[#005885] text-gray-600 hover:text-white rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg transform-gpu"
+                          title={`Connect with ${member.name} on LinkedIn`}
                         >
-                          <FaLinkedin size={18} />
+                          <FaLinkedin
+                            size={20}
+                            className="transition-all duration-300 group-hover/link:scale-110"
+                          />
+
+                          {/* Ripple effect on hover */}
+                          <div className="absolute inset-0 rounded-full bg-[#0077B5] opacity-0 group-hover/link:opacity-20 group-hover/link:scale-150 transition-all duration-300"></div>
                         </a>
+                      )}
+
+                      {/* Placeholder for future social media links */}
+                      {!member.linkedin && (
+                        <div className="text-gray-400 text-sm italic">
+                          Connect soon
+                        </div>
                       )}
                     </div>
                   </div>
+
+                  {/* Floating particles effect */}
+                  <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 animate-pulse"></div>
+                  <div
+                    className="absolute top-3/4 right-1/4 w-1 h-1 bg-[#021640] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 animate-pulse"
+                    style={{ animationDelay: "0.5s" }}
+                  ></div>
                 </div>
               ))}
             </div>
