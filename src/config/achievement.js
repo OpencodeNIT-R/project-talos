@@ -17,10 +17,12 @@ import img2025_3 from "../assets/2025 (3).png";
 import img2025_4 from "../assets/2025 (4).png";
 import img2025_5 from "../assets/2025 (5).png";
 import img2025_6 from "../assets/2025 (6).png";
+import img2015 from "../assets/2015.jpeg";
 
 // Organize images by year
 const yearImages = {
   2014: [img2014, img2014_2, img2014_3],
+  2015: [img2015],
   2016: [img2016, img2016_2],
   2017: [img2017, img2017_2, img2017_3],
   2022: [img2022],

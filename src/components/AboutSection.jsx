@@ -14,7 +14,7 @@ export default function AboutSection() {
               <img
                 src={siteConfig.about.image}
                 alt="About ASME NIT Rourkela"
-                className="w-full h-[400px] md:h-[500px] lg:h-[600px] object-cover transition-transform duration-300 hover:scale-105"
+                className="w-full h-[400px] md:h-[500px] transition-transform duration-300 hover:scale-105 object-contain"
               />
               <div className="absolute inset-0 ring-1 ring-black/10 rounded-xl"></div>
             </div>

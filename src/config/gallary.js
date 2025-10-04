@@ -1,5 +1,17 @@
 const images = [
   {
+    id: 0,
+    src: "https://res.cloudinary.com/dbnfkkfov/image/upload/v1759606221/WhatsApp_Image_2025-10-04_at_20.38.01_n5yqjt.jpg",
+    alt: "Gallery Image 0",
+    year: 2025,
+  },
+  {
+    id: 1,
+    src: "https://res.cloudinary.com/dbnfkkfov/image/upload/v1759606128/fb050fd3-4f8a-463b-996b-0dba615072a3_xl7fyw.jpg",
+    alt: "Gallery Image 1",
+    year: 2025,
+  },
+  {
     id: 2,
     src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756624821/DSC00743_p4z0ld.jpg",
     alt: "Gallery Image 2",
