@@ -10,8 +10,8 @@ const AchievementPage = () => {
           className="absolute inset-0 bg-cover bg-no-repeat"
           style={{
             backgroundImage:
-              "url('https://res.cloudinary.com/dsjxx976j/image/upload/v1756624821/DSC00743_p4z0ld.jpg')",
-            backgroundPosition: "center 90%",
+              "url('https://res.cloudinary.com/ddoeahbpv/image/upload/v1782917393/IMG-20260118-WA0109_1_tdw08v.jpg')",
+            backgroundPosition: "",
           }}
         ></div>
       </div>

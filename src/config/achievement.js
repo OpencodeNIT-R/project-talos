@@ -18,6 +18,8 @@ import img2025_4 from "../assets/2025 (4).png";
 import img2025_5 from "../assets/2025 (5).png";
 import img2025_6 from "../assets/2025 (6).png";
 import img2015 from "../assets/2015.jpeg";
+import img2026 from "../assets/2026.jpg";
+import img2026_2 from "../assets/2026 (2).jpg";
 
 // Organize images by year
 const yearImages = {
@@ -30,6 +32,7 @@ const yearImages = {
   2024: [img2024],
   2025: [img2025, img2025_2, img2025_3, img2025_4],
   "2025a": [img2025_5, img2025_6],
+  2026: [img2026, img2026_2],
 };
 
 const achievementsData = [
@@ -138,8 +141,38 @@ const achievementsData = [
       "Secured 2nd Position Overall, Team BluePrint 3.0 (FPV Drone Project).",
     year: "2025",
     category: "Design",
-    rank: "2nd Overall",
+    rank: "2nd overal",
     images: yearImages["2025a"] || null,
+  },
+  {
+    id: 12,
+    title: "Human Powered Vehicle Competition",
+    description:
+      "Team Bluestraek 12.0 Secured 1st Position in Design Presentation.",
+    year: "2026",
+    category: "Design",
+    rank: "",
+    images: yearImages["2026"] || null,
+  },
+  {
+    id: 13,
+    title: "IAM3D",
+    description:
+      "Secured 2nd Position Overall, Team BluePrint 3.0 (Rover Project).",
+    year: "2026",
+    category: "Design",
+    rank: "2nd Overall",
+    images: null,
+  },
+  {
+    id: 14,
+    title: "ORAL COMPETITION",
+    description:
+      "One of our member, Mr. Mayush Thakuria secured 3rd Price in Oral Competition in EFX 2026.",
+    year: "2026",
+    category: "",
+    rank: "3rd Price",
+    images: null,
   },
 ];
 

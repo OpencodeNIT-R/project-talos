@@ -90,7 +90,7 @@ const TeamPage = () => {
 
   const filteredMembers =
     activeTeam === "All"
-      ? Array.from(new Map(teamMembers.map((m) => [m.name, m])).values())
+      ? Array.from(new Map(teamMembers.map((m) => [m.description, m])).values())
       : teamMembers.filter((member) => member.team === activeTeam);
 
   return (
