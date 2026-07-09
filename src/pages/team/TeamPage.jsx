@@ -28,10 +28,10 @@ const TeamMemberImage = ({ src, alt }) => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative bg-white dark:bg-slate-100 p-3 pb-2 shadow-[0_6px_18px_rgba(2,22,64,0.12)] border border-gray-200 dark:border-slate-300">
       {/* Loading skeleton */}
       {isLoading && (
-        <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-t-xl"></div>
+        <div className="absolute inset-3 bg-gray-200 animate-pulse rounded-none"></div>
       )}
 
       {/* Actual image */}
@@ -43,7 +43,7 @@ const TeamMemberImage = ({ src, alt }) => {
               "https://via.placeholder.com/300x300?text=Photo+Coming+Soon"
         }
         alt={alt}
-        className={`w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105 ${
+        className={`w-full h-64 object-cover object-center rounded-none border-[8px] border-white shadow-[inset_0_0_0_1px_rgba(0,0,0,0.04)] transition-transform duration-300 group-hover:scale-105 ${
           isLoading ? "opacity-0" : "opacity-100"
         }`}
         onLoad={handleImageLoad}
@@ -214,7 +214,7 @@ const TeamPage = () => {
               >
                 {filteredMembers.map((member, index) => (
                   <SwiperSlide key={index}>
-                    <div className="bg-white dark:bg-[#13233F] dark:border-slate-700 border border-gray-200 hover:border-[#021640]/30 dark:hover:shadow-[0_16px_35px_rgba(11,32,68,0.35)] rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group overflow-hidden h-full">
+                    <div className="bg-[#fdfdf8] dark:bg-[#13233F] border border-gray-300 dark:border-slate-700 rounded-[10px] shadow-[0_10px_24px_rgba(2,22,64,0.16)] transition-all duration-300 hover:-translate-y-2 group overflow-hidden h-full">
                       {/* Image */}
                       <div className="relative overflow-hidden">
                         <TeamMemberImage src={member.img} alt={member.name} />
@@ -229,7 +229,7 @@ const TeamPage = () => {
                       </div>
 
                       {/* Content */}
-                      <div className="p-6 space-y-4">
+                      <div className="p-6 pt-4 space-y-4 bg-[#fdfdf8] dark:bg-[#13233F]">
                         <div className="text-center">
                           <h3 className="font-bold text-lg dark:text-white text-[#021640] leading-tight mb-2">
                             {member.name || "Full Name"}
@@ -274,7 +274,7 @@ const TeamPage = () => {
               {filteredMembers.map((member, index) => (
                 <div
                   key={index}
-                  className="bg-white dark:bg-[#13233F] dark:border-slate-700 border border-gray-200 hover:border-[#021640]/30 dark:hover:shadow-[0_16px_35px_rgba(11,32,68,0.35)] rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group overflow-hidden"
+                  className="bg-[#fdfdf8] dark:bg-[#13233F] border border-gray-300 dark:border-slate-700 rounded-[10px] shadow-[0_10px_24px_rgba(2,22,64,0.16)] transition-all duration-300 hover:-translate-y-2 group overflow-hidden"
                   style={{
                     animationDelay: `${index * 100}ms`,
                   }}
@@ -293,7 +293,7 @@ const TeamPage = () => {
                   </div>
 
                   {/* Content */}
-                  <div className="p-6 space-y-4">
+                  <div className="p-6 pt-4 space-y-4 bg-[#fdfdf8] dark:bg-[#13233F]">
                     <div className="text-center">
                       <h3 className="font-bold text-lg dark:text-white text-[#021640] leading-tight mb-2">
                         {member.name || "Full Name"}

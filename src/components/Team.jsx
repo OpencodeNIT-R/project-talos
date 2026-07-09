@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import teamMembers from "../config/teammate";
 import { FaLinkedin } from "react-icons/fa6";
 import { useNavigate } from "react-router";
@@ -8,6 +9,7 @@ import "swiper/css/pagination";
 
 const TeamSlider = () => {
   const navigate = useNavigate();
+  const swiperRef = useRef(null);
 
   const uniqueTeamMembers = Array.from(
     new Map(teamMembers.map((member) => [member.name, member])).values(),
@@ -21,8 +23,63 @@ const TeamSlider = () => {
     window.scrollTo(0, 0);
   };
 
+  // Called every frame while Swiper scrolls — updates each slide's scale
+  const handleProgress = (swiper) => {
+    swiper.slides.forEach((slide) => {
+      const inner = slide.querySelector(".team-card-inner");
+      if (!inner) return;
+
+      // progress: how far this slide is from the center of the viewport (0 = centered)
+      const progress = slide.progress; // provided by Swiper per-slide
+      // clamp to -1 … 1 so far-away slides don't go tiny
+      const clamped = Math.max(-1, Math.min(1, progress));
+      // scale: 1 when centered, 0.82 at the edges
+      const scale = 1 - Math.abs(clamped) * 0.18;
+      const opacity = 1 - Math.abs(clamped) * 0.35;
+
+      inner.style.transform = `scale(${scale})`;
+      inner.style.opacity = opacity;
+    });
+  };
+
+  // Run once after init so initial positions are applied before first interaction
+  const handleSetTranslate = (swiper) => {
+    handleProgress(swiper);
+  };
+
   return (
-    <section className="relative bg-white dark:bg-slate-900 px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20">
+    <section className="relative bg-white dark:bg-slate-900 px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 overflow-hidden">
+      <style>{`
+        .team-card-inner {
+          transition: transform 0.4s cubic-bezier(0.34, 1.2, 0.64, 1),
+                      opacity 0.4s ease;
+          will-change: transform, opacity;
+          transform-origin: center center;
+        }
+
+        .team-swiper .swiper-pagination {
+          position: relative !important;
+          margin-top: 2rem;
+        }
+
+        .team-swiper .swiper-pagination-bullet {
+          width: 12px;
+          height: 12px;
+          background: #e5e7eb;
+          opacity: 1;
+          transition: all 0.3s ease;
+        }
+
+        .team-swiper .swiper-pagination-bullet-active {
+          background: #021640;
+          transform: scale(1.2);
+        }
+
+        .dark .team-swiper .swiper-pagination-bullet-active {
+          background: #2563eb;
+        }
+      `}</style>
+
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">
@@ -48,9 +105,15 @@ const TeamSlider = () => {
 
         {/* Team Carousel */}
         <Swiper
+          ref={swiperRef}
           modules={[Autoplay, Pagination]}
           spaceBetween={32}
           slidesPerView={1}
+          centeredSlides={true}
+          watchSlidesProgress={true}
+          onProgress={handleProgress}
+          onSetTranslate={handleSetTranslate}
+          onSwiper={handleSetTranslate}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
@@ -77,7 +140,8 @@ const TeamSlider = () => {
         >
           {displayMembers.map((member, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-white dark:bg-[#13233F] dark:border-slate-700 border border border-gray-200 hover:border-[#021640]/30 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group overflow-hidden h-full">
+              {/* team-card-inner is what gets scaled */}
+              <div className="team-card-inner relative bg-white dark:bg-[#13233F] dark:border-slate-700 border border-gray-200 hover:border-[#021640]/30 rounded-xl shadow-md hover:shadow-lg group overflow-hidden h-full">
                 {/* Image */}
                 <div className="relative overflow-hidden">
                   <img
@@ -130,27 +194,6 @@ const TeamSlider = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        {/* Custom Pagination Styles */}
-        <style jsx global>{`
-          .team-swiper .swiper-pagination {
-            position: relative !important;
-            margin-top: 2rem;
-          }
-
-          .team-swiper .swiper-pagination-bullet {
-            width: 12px;
-            height: 12px;
-            background: #e5e7eb;
-            opacity: 1;
-            transition: all 0.3s ease;
-          }
-
-          .team-swiper .swiper-pagination-bullet-active {
-            background: #021640;
-            transform: scale(1.2);
-          }
-        `}</style>
       </div>
     </section>
   );
