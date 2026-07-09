@@ -2,7 +2,7 @@ import Button from "./shared/Button";
 import { siteConfig } from "../config/navbarHero";
 
 import { useNavigate } from "react-router-dom";
-  
+
 export default function HeroSection() {
   const navigate = useNavigate();
   const handleJoinUs = () => {
@@ -28,10 +28,10 @@ export default function HeroSection() {
             <div className="inline-block px-4 py-2 dark:text-gray-100 dark:bg-slate-800 bg-[#021640]/10 text-[#021640] rounded-full text-sm md:text-base font-medium tracking-wide uppercase mt-10">
               {siteConfig.hero.title}
             </div>
-            <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-6xl font-bold dark:text-white text-[#021640] leading-tight tracking-tight">
+            <h1 className="text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold dark:text-white text-[#021640] leading-tight tracking-wide">
               {siteConfig.hero.subtitle}
             </h1>
-            <p className="text-xl md:text-[22px] dark:text-gray-300 text-gray-600 leading-relaxed md:leading-normal max-w-2xl mx-auto lg:mx-0">
+            <p className="text-xl md:text-2xl dark:text-gray-300 text-gray-600 leading-relaxed md:leading-normal max-w-2xl mx-auto lg:mx-0">
               {siteConfig.hero.description}
             </p>
           </div>

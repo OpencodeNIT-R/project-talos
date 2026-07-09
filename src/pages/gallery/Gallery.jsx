@@ -143,7 +143,7 @@ export default function GallaryPage() {
                 ))}
               </div>
             </div>
-            <p className="text-black-600 dark:text-gray-300 md:max-w-xl text-lg md:text-lg">
+            <p className="text-black-600 dark:text-gray-300 md:max-w-2xl text-lg md:text-lg">
               Step into our visual storybook — where every image captures a
               moment, every frame holds a memory, and every detail speaks of the
               journey we’ve lived and the beauty we’ve created. Welcome to our

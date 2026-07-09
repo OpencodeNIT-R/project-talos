@@ -10,10 +10,10 @@ export default function Achievements() {
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold dark:text-white text-[#021640] leading-tight tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-extrabold dark:text-white text-[#021640] leading-tight tracking-tight">
               Our Achievements
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto">
               ASME NIT Rourkela excels in fostering innovation and leadership
               through workshops, competitions, and expert lectures. Recognized
               for achievements in events like the Student Design Challenge and

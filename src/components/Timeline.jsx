@@ -129,10 +129,10 @@ const Timeline = () => {
       >
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl dark:text-white md:text-5xl font-bold text-[#0B2044] mb-6">
+          <h2 className="text-4xl dark:text-white md:text-5xl font-extrabold text-[#0B2044] mb-6">
             Excellence Through Innovation
           </h2>
-          <p className="text-lg md:text-xl dark:text-gray-300 text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-2xl dark:text-gray-300 text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Discover our remarkable journey of achievements spanning over a
             decade of engineering excellence, innovation, and competitive
             success in mechanical engineering challenges worldwide.

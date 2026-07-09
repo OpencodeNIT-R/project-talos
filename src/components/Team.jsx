@@ -87,7 +87,7 @@ const TeamSlider = () => {
             <h2 className="text-4xl sm:text-4xl md:text-5xl font-bold dark:text-white text-[#021640] leading-tight tracking-tight">
               Our Team
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto">
               Meet our amazing team members who drive innovation and excellence
               in mechanical engineering through their dedication and expertise.
             </p>

@@ -24,10 +24,10 @@ export default function AboutSection() {
         {/* Text Content */}
         <div className="w-full lg:w-1/2 space-y-8 text-center lg:text-left order-1 lg:order-2">
           <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#021640] dark:text-white leading-tight tracking-tight">
+            <h2 className="text-4xl md:text-6xl font-extrabold text-[#021640] dark:text-white leading-tight tracking-wide">
               {siteConfig.about.title}
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            <p className="text-[22px] md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               {siteConfig.about.description}
             </p>
           </div>

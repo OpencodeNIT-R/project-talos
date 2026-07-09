@@ -92,10 +92,10 @@ const Events = () => {
         {/* Header Section */}
         <div className="text-center mb-16 pt-8">
           <div className="space-y-6">
-            <h1 className="text-4xl sm:text-[42px] md:text-5xl font-bold dark:text-white text-[#021640] leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-[42px] md:text-5xl font-extrabold dark:text-white text-[#021640] leading-tight tracking-tight">
               Our Events
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto">
               Discover our technical workshops, competitions, and networking
               events designed to enhance your engineering journey and foster
               innovation.

@@ -20,7 +20,7 @@ const SponsorsSection = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-[#021640] dark:text-white leading-tight tracking-tight">
               Our Trusted Partners
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto">
               Proudly supported by amazing organizations who believe in our
               mission and help us drive innovation forward.
             </p>

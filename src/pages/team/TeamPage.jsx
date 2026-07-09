@@ -99,10 +99,10 @@ const TeamPage = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 pt-8">
           <div className="space-y-6">
-            <h1 className="text-4xl sm:text-[42px] md:text-5xl font-bold dark:text-white text-[#021640] leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-[42px] md:text-5xl font-extrabold dark:text-white text-[#021640] leading-tight tracking-tight">
               Meet Our Team
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto">
               Discover the passionate individuals driving innovation and
               excellence at ASME NIT Rourkela through their dedication and
               expertise.
