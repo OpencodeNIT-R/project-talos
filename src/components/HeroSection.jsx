@@ -28,9 +28,19 @@ export default function HeroSection() {
             <div className="inline-block px-4 py-2 dark:text-gray-100 dark:bg-slate-800 bg-[#021640]/10 text-[#021640] rounded-full text-sm md:text-base font-medium tracking-wide uppercase mt-10">
               {siteConfig.hero.title}
             </div>
-            <h1 className="text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold dark:text-white text-[#021640] leading-tight tracking-wide">
-              {siteConfig.hero.subtitle}
-            </h1>
+            {(() => {
+              const words = siteConfig.hero.subtitle.split(" ");
+              const first = words[0];
+              const rest = words.slice(1).join(" ");
+              return (
+                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold dark:text-white text-[#021640] leading-tight tracking-tighter max-w-3xl mx-auto lg:mx-0">
+                  <span className="block sm:inline">{first}</span>
+                  <span className="block sm:inline">
+                    {rest ? ` ${rest}` : ""}
+                  </span>
+                </h1>
+              );
+            })()}
             <p className="text-xl md:text-2xl dark:text-gray-300 text-gray-600 leading-relaxed md:leading-normal max-w-2xl mx-auto lg:mx-0">
               {siteConfig.hero.description}
             </p>
@@ -61,7 +71,7 @@ export default function HeroSection() {
               <img
                 src={siteConfig.hero.image}
                 alt="ASME NIT Rourkela - Engineering Excellence"
-                className="w-full h-[440px] md:h-[500px] lg:h-[560px] object-cover transition-transform duration-300 hover:scale-105"
+                className="w-full h-[320px] sm:h-[380px] md:h-[500px] lg:h-[560px] object-cover transition-transform duration-300 hover:scale-105"
               />
               <div className="absolute inset-0 ring-1 ring-black/10 rounded-xl"></div>
             </div>
