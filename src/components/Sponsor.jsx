@@ -98,6 +98,10 @@ const SponsorsSection = () => {
             background: #021640;
             transform: scale(1.2);
           }
+
+          .dark .sponsors-swiper .swiper-pagination-bullet-active {
+            background: #2563eb;
+          }
         `}</style>
       </div>
     </section>

@@ -49,6 +49,9 @@ export default function Navbar() {
     }
   };
 
+  const navItemBase =
+    "relative text-base font-semibold px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-slate-50 dark:hover:bg-slate-800 after:absolute after:bottom-0 after:left-0 after:h-[2.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-gradient-to-r after:from-[#0A1440] after:to-[#1A56DB] after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100";
+
   return (
     <header
       className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${
@@ -87,10 +90,10 @@ export default function Navbar() {
                 key={item.name}
                 to={item.href}
                 className={({ isActive }) =>
-                  `text-base font-medium tracking-wide transition-all duration-300 whitespace-nowrap px-4 py-2 rounded-lg ${
+                  `${navItemBase} whitespace-nowrap ${
                     isActive
-                      ? "text-[#021640] dark:text-white border-b-2 border-blue-400 pb-1 -translate-y-0.5"
-                      : "text-gray-700 dark:text-gray-200 hover:text-[#021640] dark:hover:text-white  hover:-translate-y-1"
+                      ? "text-[#021640] dark:text-white border-b-2 border-blue-400 pb-1 -translate-y-0.5 after:origin-bottom-left after:scale-x-100"
+                      : "text-gray-700 dark:text-gray-200 hover:text-[#021640] dark:hover:text-white hover:-translate-y-1"
                   }`
                 }
               >
@@ -199,7 +202,7 @@ export default function Navbar() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="dark:text-white block w-full py-4 px-6 text-lg font-medium text-white hover:text-gray-300 hover:bg-white/10 rounded-lg transition-all duration-200 text-center"
+                  className={`relative block w-full text-center text-lg font-semibold px-6 py-4 rounded-lg transition-all duration-200 text-white hover:text-gray-300 hover:bg-white/10 after:absolute after:bottom-0 after:left-0 after:h-[2.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-gradient-to-r after:from-[#0A1440] after:to-[#1A56DB] after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}
