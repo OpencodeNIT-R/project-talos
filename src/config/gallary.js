@@ -1,4 +1,19 @@
+import img2026_1 from "../assets/2026.jpg";
+import img2026_2 from "../assets/2026 (2).jpg";
+
 const images = [
+  {
+    id: 101,
+    src: img2026_1,
+    alt: "Gallery Image 2026 1",
+    year: 2026,
+  },
+  {
+    id: 102,
+    src: img2026_2,
+    alt: "Gallery Image 2026 2",
+    year: 2026,
+  },
   {
     id: 0,
     src: "https://res.cloudinary.com/dbnfkkfov/image/upload/v1759606221/WhatsApp_Image_2025-10-04_at_20.38.01_n5yqjt.jpg",
@@ -160,12 +175,6 @@ const images = [
     src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756625473/IMG-20241110-WA0103_qvcwzo.jpg",
     alt: "Gallery Image 26",
     year: 2025,
-  },
-  {
-    id: 27,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756627317/asme126_eqyzzs.jpg",
-    alt: "ASME Image 1",
-    year: "others",
   },
   {
     id: 28,
@@ -351,12 +360,6 @@ const images = [
     id: 58,
     src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756627214/asme6_nwopii.jpg",
     alt: "ASME Image 32",
-    year: "others",
-  },
-  {
-    id: 59,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756627213/asme1_ksyaia.jpg",
-    alt: "ASME Image 33",
     year: "others",
   },
 ];
