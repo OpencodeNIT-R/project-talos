@@ -1,6 +1,12 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import images from "../../config/gallary";
-import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Maximize2,
+  X,
+  Image as ImageIcon,
+} from "lucide-react";
 
 export default function GalleryPage() {
   const [selectedYear, setSelectedYear] = useState("all");
@@ -43,17 +49,6 @@ export default function GalleryPage() {
     }
     return images.filter((img) => img.year === Number(selectedYear));
   }, [selectedYear]);
-
-  // Fallback image helper
-  const getImageSrc = useCallback(
-    (image) => {
-      if (failedImages[image.id]) {
-        return "https://res.cloudinary.com/dbnfkkfov/image/upload/v1759606221/WhatsApp_Image_2025-10-04_at_20.38.01_n5yqjt.jpg";
-      }
-      return image.src;
-    },
-    [failedImages],
-  );
 
   const handleImageError = (id) => {
     setFailedImages((prev) => ({ ...prev, [id]: true }));
@@ -98,21 +93,30 @@ export default function GalleryPage() {
       {/* Clean Large Hero Photo (Textless, clearly visible like Achievement section) */}
       <div className="relative h-[300px] sm:h-[380px] md:h-[460px] w-full overflow-hidden bg-slate-900">
         <div className="relative h-full w-full">
-          {heroSlides.map((slide, index) => (
-            <div
-              key={slide.id || index}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-              }`}
-            >
-              <img
-                src={getImageSrc(slide)}
-                alt={slide.alt || `Hero Slide ${index + 1}`}
-                onError={() => handleImageError(slide.id)}
-                className="w-full h-full object-cover transition-transform duration-[8000ms] ease-out scale-105"
-              />
-            </div>
-          ))}
+          {heroSlides.map((slide, index) => {
+            const isSlideFailed = failedImages[slide.id];
+            return (
+              <div
+                key={slide.id || index}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+                }`}
+              >
+                {!isSlideFailed ? (
+                  <img
+                    src={slide.src}
+                    alt={slide.alt || `Hero Slide ${index + 1}`}
+                    onError={() => handleImageError(slide.id)}
+                    className="w-full h-full object-cover transition-transform duration-[8000ms] ease-out scale-105"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-slate-800 flex items-center justify-center text-slate-400">
+                    <ImageIcon className="w-12 h-12 opacity-40" />
+                  </div>
+                )}
+              </div>
+            );
+          })}
 
           {/* Minimal Bottom Slide Indicators */}
           <div className="absolute bottom-4 left-0 right-0 z-30 flex items-center justify-center gap-3 px-4">
@@ -208,28 +212,39 @@ export default function GalleryPage() {
         {galleryImages.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {galleryImages.map((image, index) => {
-              const imgSrc = getImageSrc(image);
+              const isFailed = failedImages[image.id];
 
               return (
                 <div
                   key={image.id || index}
-                  onClick={() => openLightbox(index)}
+                  onClick={() => !isFailed && openLightbox(index)}
                   className="group relative cursor-pointer overflow-hidden rounded-2xl bg-gray-100 dark:bg-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 aspect-[4/3] w-full border border-gray-200/80 dark:border-slate-700/60"
                 >
-                  <img
-                    src={imgSrc}
-                    alt={image.alt || `Gallery Image ${index + 1}`}
-                    onError={() => handleImageError(image.id)}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                  />
+                  {!isFailed ? (
+                    <>
+                      <img
+                        src={image.src}
+                        alt={image.alt || `Gallery Image ${index + 1}`}
+                        onError={() => handleImageError(image.id)}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                      />
 
-                  {/* Subtle Hover Overlay */}
-                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="p-3.5 rounded-full bg-white/20 dark:bg-black/40 text-white backdrop-blur-md border border-white/30 transform scale-90 group-hover:scale-100 transition-transform duration-300">
-                      <Maximize2 className="w-5 h-5" />
+                      {/* Subtle Hover Overlay */}
+                      <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="p-3.5 rounded-full bg-white/20 dark:bg-black/40 text-white backdrop-blur-md border border-white/30 transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                          <Maximize2 className="w-5 h-5" />
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center p-4 bg-slate-100 dark:bg-slate-800 text-gray-400 dark:text-slate-500">
+                      <ImageIcon className="w-8 h-8 mb-2 opacity-50" />
+                      <span className="text-xs font-medium text-center line-clamp-1">
+                        {image.alt || `Image ${index + 1}`}
+                      </span>
                     </div>
-                  </div>
+                  )}
                 </div>
               );
             })}
@@ -282,7 +297,7 @@ export default function GalleryPage() {
 
             <div className="relative max-w-5xl max-h-[82vh] flex items-center justify-center">
               <img
-                src={getImageSrc(galleryImages[lightboxIndex])}
+                src={galleryImages[lightboxIndex]?.src}
                 alt={`Gallery Image ${lightboxIndex + 1}`}
                 className="max-w-full max-h-[82vh] object-contain rounded-lg shadow-2xl"
               />
