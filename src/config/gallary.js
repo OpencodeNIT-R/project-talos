@@ -1,5 +1,21 @@
+<<<<<<< HEAD
 import img2026_1 from "../assets/2026.jpg";
 import img2026_2 from "../assets/2026 (2).jpg";
+=======
+import img2014 from "../assets/2014.png";
+import img2014_2 from "../assets/2014 (2).png";
+import img2014_3 from "../assets/2014 (3).png";
+import img2016 from "../assets/2016.png";
+import img2016_2 from "../assets/2016 (2).png";
+import img2017 from "../assets/2017.png";
+import img2017_2 from "../assets/2017 (2).png";
+import img2017_3 from "../assets/2017 (3).png";
+import img2022 from "../assets/2022.png";
+import img2023 from "../assets/2023.png";
+import img2023_2 from "../assets/2023 (2).png";
+import img2024 from "../assets/2024.png";
+import img2015 from "../assets/2015.jpeg";
+>>>>>>> defcba9 (Update of galary section)
 
 const images = [
   {
@@ -28,196 +44,206 @@ const images = [
   },
   {
     id: 2,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756624821/DSC00743_p4z0ld.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785231639/IMG_5981_dgvrjl.jpg",
     alt: "Gallery Image 2",
     year: 2025,
   },
   {
     id: 3,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756624816/DSC00704_2_tfleon.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785231608/IMG_20250817_012537_v4lwfr.jpg",
     alt: "Gallery Image 3",
     year: 2025,
   },
   {
     id: 4,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756624803/DSC00687_xtvbin.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785231485/IMG-20250329-WA0353_u7nuwz.jpg",
     alt: "Gallery Image 4",
     year: 2025,
   },
   {
     id: 5,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756624794/Photo_from_Soumya_Mohanty_1_fgyqdr.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785231679/DSC00623_t01k8b.jpg",
     alt: "Gallery Image 5",
     year: 2025,
   },
   {
     id: 6,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756624793/Photo_from_Soumya_Mohanty_jqtsbq.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785231440/IMG-20250402-WA0342_iixchm.jpg",
     alt: "Gallery Image 6",
     year: 2025,
   },
   {
     id: 7,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756624788/DSC00672_cnsjue.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785231399/IMG20250328072604_tiaxhr.jpg",
     alt: "Gallery Image 7",
     year: 2025,
   },
   {
     id: 8,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756624784/DSC00629_vn0nb5.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785231285/Photo_from_Soumya_Mohanty_ejj8eq.jpg",
     alt: "Gallery Image 8",
     year: 2025,
   },
   {
     id: 9,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756624778/DSC00644_bmeghr.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785231266/WhatsApp_Image_2025-05-23_at_11.36.02_ded6d4a8_sp5qjs.jpg",
     alt: "Gallery Image 9",
     year: 2025,
   },
   {
     id: 10,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756624777/DSC00642_aeupi0.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785232313/DSC00642_cuhwgo.jpg",
     alt: "Gallery Image 10",
     year: 2025,
   },
   {
     id: 11,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756624775/DSC00657_e9pmnt.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785232299/DSC00629_iqruma.jpg",
     alt: "Gallery Image 11",
     year: 2025,
   },
   {
     id: 12,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756624774/DSC00653_2_nyfpch.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785232279/DSC00653_2_u8wlfr.jpg",
     alt: "Gallery Image 12",
     year: 2025,
   },
   {
     id: 13,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756625326/IMG_5981_wqrwpm.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785232257/DSC00657_tmhg1n.jpg",
     alt: "Gallery Image 13",
     year: 2025,
   },
   {
     id: 14,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756625312/DSC00623_rvh2ad.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785232245/DSC00672_n84tqv.jpg",
     alt: "Gallery Image 14",
     year: 2025,
   },
   {
     id: 15,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756625307/IMG20250328072604_ynspwh.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785232143/DSC00704_2_hat1ql.jpg",
     alt: "Gallery Image 15",
     year: 2025,
   },
   {
     id: 16,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756625304/IMG-20250402-WA0340_aunrpx.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785232781/asme63_gxnbfz.jpg",
     alt: "Gallery Image 16",
     year: 2025,
   },
   {
     id: 17,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756625303/Photo_from_Soumya_Mohanty_mz2adk.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785232064/Photo_from_Soumya_Mohanty_1_lc43ju.jpg",
     alt: "Gallery Image 17",
     year: 2025,
   },
   {
     id: 18,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756625303/WhatsApp_Image_2025-05-23_at_11.36.02_ded6d4a8_omrt0v.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785232047/Photo_from_Soumya_Mohanty_q7eaxt.jpg",
     alt: "Gallery Image 18",
     year: 2025,
   },
   {
     id: 19,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756625302/IMG-20250402-WA0342_y0lwfp.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785232110/DSC00743_jw5qbi.jpg",
     alt: "Gallery Image 19",
     year: 2025,
   },
   {
     id: 20,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756625301/IMG-20250329-WA0353_mvz2bx.jpg",
+    src: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785232257/DSC00657_tmhg1n.jpg",
     alt: "Gallery Image 20",
     year: 2025,
   },
   {
     id: 21,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756625300/IMG_20250817_012537_e21zun.jpg",
+    src: img2014,
     alt: "Gallery Image 21",
-    year: 2025,
+    year: "others",
   },
   {
     id: 22,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756625477/IMG-20241113-WA0011_svg0su.jpg",
+    src: img2014_2,
     alt: "Gallery Image 22",
-    year: 2025,
+    year: "others",
   },
   {
     id: 23,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756625477/IMG-20250525-WA0003_jspriu.jpg",
+    src: img2014_3,
     alt: "Gallery Image 23",
-    year: 2025,
+    year: "others",
   },
   {
     id: 24,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756625475/IMG-20241120-WA0001_gzzfzl.jpg",
+    src: img2015,
     alt: "Gallery Image 24",
-    year: 2025,
+    year: "others",
   },
   {
     id: 25,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756625474/IMG-20241110-WA0035_psawtt.jpg",
+    src: img2016,
     alt: "Gallery Image 25",
-    year: 2025,
+    year: "others",
   },
   {
     id: 26,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756625473/IMG-20241110-WA0103_qvcwzo.jpg",
+    src: img2016,
     alt: "Gallery Image 26",
-    year: 2025,
+    year: "others",
   },
   {
+<<<<<<< HEAD
+=======
+    id: 27,
+    src: img2016_2,
+    alt: "ASME Image 1",
+    year: "others",
+  },
+  {
+>>>>>>> defcba9 (Update of galary section)
     id: 28,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756627315/asme132_vzqgiw.jpg",
+    src: img2017,
     alt: "ASME Image 2",
     year: "others",
   },
   {
     id: 29,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756627313/asme125_mbkfa8.jpg",
+    src: img2017_2,
     alt: "ASME Image 3",
     year: "others",
   },
   {
     id: 30,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756627312/asme110_zdi3jv.jpg",
+    src: img2017_3,
     alt: "ASME Image 4",
     year: "others",
   },
   {
     id: 31,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756627310/asme108_cpxyu1.jpg",
+    src: img2022,
     alt: "ASME Image 5",
     year: "others",
   },
   {
     id: 32,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756627309/asme101_amw3id.jpg",
+    src: img2023,
     alt: "ASME Image 6",
     year: "others",
   },
   {
     id: 33,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756627306/asme100_m8zfmy.jpg",
+    src: img2023_2,
     alt: "ASME Image 7",
     year: "others",
   },
   {
     id: 34,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756627304/asme95_ddqf1z.jpg",
+    src: img2024,
     alt: "ASME Image 8",
     year: "others",
   },
+<<<<<<< HEAD
   {
     id: 35,
     src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756627303/asme93_gbo3e7.jpg",
@@ -362,6 +388,8 @@ const images = [
     alt: "ASME Image 32",
     year: "others",
   },
+=======
+>>>>>>> defcba9 (Update of galary section)
 ];
 
 export default images;
