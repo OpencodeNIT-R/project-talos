@@ -10,13 +10,10 @@ const AchievementPage = () => {
           className="absolute inset-0 bg-cover bg-no-repeat"
           style={{
             backgroundImage:
-<<<<<<< HEAD
               "url('https://res.cloudinary.com/ddoeahbpv/image/upload/v1782917393/IMG-20260118-WA0109_1_tdw08v.jpg')",
-            backgroundPosition: "",
-=======
+            backgroundPosition:
               "url('https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785234333/WhatsApp_Image_2026-06-29_at_18.22.43_mjqlt2.jpg')",
             backgroundPosition: "center 90%",
->>>>>>> defcba9 (Update of galary section)
           }}
         ></div>
       </div>
