@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 import img2026_1 from "../assets/2026.jpg";
 import img2026_2 from "../assets/2026 (2).jpg";
-=======
 import img2014 from "../assets/2014.png";
 import img2014_2 from "../assets/2014 (2).png";
 import img2014_3 from "../assets/2014 (3).png";
@@ -15,7 +13,6 @@ import img2023 from "../assets/2023.png";
 import img2023_2 from "../assets/2023 (2).png";
 import img2024 from "../assets/2024.png";
 import img2015 from "../assets/2015.jpeg";
->>>>>>> defcba9 (Update of galary section)
 
 const images = [
   {
@@ -193,15 +190,12 @@ const images = [
     year: "others",
   },
   {
-<<<<<<< HEAD
-=======
     id: 27,
     src: img2016_2,
     alt: "ASME Image 1",
     year: "others",
   },
   {
->>>>>>> defcba9 (Update of galary section)
     id: 28,
     src: img2017,
     alt: "ASME Image 2",
@@ -243,7 +237,6 @@ const images = [
     alt: "ASME Image 8",
     year: "others",
   },
-<<<<<<< HEAD
   {
     id: 35,
     src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756627303/asme93_gbo3e7.jpg",
@@ -388,8 +381,6 @@ const images = [
     alt: "ASME Image 32",
     year: "others",
   },
-=======
->>>>>>> defcba9 (Update of galary section)
 ];
 
 export default images;
