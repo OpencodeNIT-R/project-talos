@@ -86,7 +86,7 @@ const Footer = ({
               <li>
                 <Link
                   to="/gallery"
-                  className="text-gray-300 hover:text-[#51B8F2] duration-200 text-sm sm:text-base inline-block hover:translate-x-1 transform transition-transform"
+                  className="text-gray-300 hover:text-[#51B8F2] duration-200 font-extrabold text-sm sm:text-base inline-block hover:translate-x-1 transform transition-transform"
                 >
                   Gallery
                 </Link>

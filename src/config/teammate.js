@@ -11,7 +11,7 @@ const teamMembers = [
   {
     name: "Aayush Barik",
     title: "Vice President",
-    img: "https://res.cloudinary.com/ddoeahbpv/image/upload/Aayush_Barik_Vice_President_klgnid.jpg",
+    img: "https://res.cloudinary.com/dm406z4pf/image/upload/v1785069742/Aayush_Barik_Vice_President_2_wbg5bq.jpg",
     description: "2",
     team: "Executive Body",
     linkedin: "https://www.linkedin.com/in/aayush-barik-668843339/",
@@ -131,7 +131,7 @@ const teamMembers = [
   {
     name: "Yegnesh Sagar",
     title: "Captain",
-    img: "https://res.cloudinary.com/ddoeahbpv/image/upload/images_1_ujpf6e.jpg",
+    img: "https://res.cloudinary.com/dm406z4pf/image/upload/v1785069027/1784538371641_vmsozp.png",
     description: "18",
     team: "Team Bluebird",
     linkedin: "https://www.linkedin.com/in/yegnesh-sagar-89778b348/",

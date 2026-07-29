@@ -177,7 +177,7 @@ const achievementsData = [
 ];
 
 export const achivementTop = {
-  link: "https://res.cloudinary.com/dsjxx976j/image/upload/v1755452142/DSC00743_sw9grt.jpg",
+  link: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785234333/WhatsApp_Image_2026-06-29_at_18.22.43_mjqlt2.jpg",
 };
 
 export default achievementsData;

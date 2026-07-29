@@ -14,10 +14,10 @@ const Applications = () => {
         {/* Header Section */}
         <div className="text-center mb-16 pt-8">
           <div className="space-y-6">
-            <h1 className="text-4xl sm:text-[42px] md:text-5xl font-bold dark:text-white text-[#021640] leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-[42px] md:text-5xl font-extrabold dark:text-white text-[#021640] leading-tight tracking-tight">
               Join Our Community
             </h1>
-            <p className="text-lg md:text-xl dark:text-gray-300 text-gray-600 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-lg md:text-2xl dark:text-gray-300 text-gray-600 leading-relaxed max-w-4xl mx-auto">
               Begin your journey with ASME NIT Rourkela and become part of a
               legacy of engineering excellence and innovation.
             </p>
