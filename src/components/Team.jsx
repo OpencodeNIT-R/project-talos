@@ -150,8 +150,11 @@ const TeamSlider = () => {
                       "https://via.placeholder.com/300x300?text=Photo+Coming+Soon"
                     }
                     alt={member.name}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                   />
+
                   <div className="absolute inset-0 ring-1 ring-black/10"></div>
                 </div>
 

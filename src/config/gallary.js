@@ -1,18 +1,18 @@
 import img2026_1 from "../assets/2026.jpg";
 import img2026_2 from "../assets/2026 (2).jpg";
-import img2014 from "../assets/2014.png";
-import img2014_2 from "../assets/2014 (2).png";
-import img2014_3 from "../assets/2014 (3).png";
-import img2016 from "../assets/2016.png";
-import img2016_2 from "../assets/2016 (2).png";
-import img2017 from "../assets/2017.png";
-import img2017_2 from "../assets/2017 (2).png";
-import img2017_3 from "../assets/2017 (3).png";
-import img2022 from "../assets/2022.png";
-import img2023 from "../assets/2023.png";
-import img2023_2 from "../assets/2023 (2).png";
-import img2024 from "../assets/2024.png";
+import img2014 from "../assets/2014.jpg";
+import img2014_2 from "../assets/2014 (2).jpg";
+import img2014_3 from "../assets/2014 (3).jpg";
+import img2016 from "../assets/2016.jpg";
+import img2016_2 from "../assets/2016 (2).jpg";
+import img2017 from "../assets/2017.jpg";
+import img2017_2 from "../assets/2017 (2).jpg";
+import img2017_3 from "../assets/2017 (3).jpg";
+import img2022 from "../assets/2022.jpg";
+import img2023 from "../assets/2023.jpg";
+import img2023_2 from "../assets/2023 (2).jpg";
 import img2015 from "../assets/2015.jpeg";
+import { optimizeCloudinaryUrl } from "../utils/imageOptimizer";
 
 const images = [
   {
@@ -231,18 +231,14 @@ const images = [
     alt: "ASME Image 7",
     year: "others",
   },
-  {
-    id: 34,
-    src: img2024,
-    alt: "ASME Image 8",
-    year: "others",
-  },
-  {
-    id: 35,
-    src: "https://res.cloudinary.com/dsjxx976j/image/upload/v1756627303/asme93_gbo3e7.jpg",
-    alt: "ASME Image 9",
-    year: "others",
-  },
 ];
 
-export default images;
+const optimizedImages = images.map((img) => ({
+  ...img,
+  src:
+    typeof img.src === "string"
+      ? optimizeCloudinaryUrl(img.src, { width: 1000 })
+      : img.src,
+}));
+
+export default optimizedImages;

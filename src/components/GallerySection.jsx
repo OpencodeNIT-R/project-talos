@@ -58,7 +58,9 @@ export default function GallerySection() {
                   alt={image.alt}
                   className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                   loading="lazy"
+                  decoding="async"
                 />
+
                 <div className="absolute inset-0 ring-1 ring-black/10"></div>
 
                 {/* Overlay on hover */}

@@ -1,25 +1,26 @@
 // Import all year-based images
-import img2014 from "../assets/2014.png";
-import img2014_2 from "../assets/2014 (2).png";
-import img2014_3 from "../assets/2014 (3).png";
-import img2016 from "../assets/2016.png";
-import img2016_2 from "../assets/2016 (2).png";
-import img2017 from "../assets/2017.png";
-import img2017_2 from "../assets/2017 (2).png";
-import img2017_3 from "../assets/2017 (3).png";
-import img2022 from "../assets/2022.png";
-import img2023 from "../assets/2023.png";
-import img2023_2 from "../assets/2023 (2).png";
-import img2024 from "../assets/2024.png";
-import img2025 from "../assets/2025.png";
-import img2025_2 from "../assets/2025 (2).png";
-import img2025_3 from "../assets/2025 (3).png";
-import img2025_4 from "../assets/2025 (4).png";
-import img2025_5 from "../assets/2025 (5).png";
-import img2025_6 from "../assets/2025 (6).png";
+import img2014 from "../assets/2014.jpg";
+import img2014_2 from "../assets/2014 (2).jpg";
+import img2014_3 from "../assets/2014 (3).jpg";
+import img2016 from "../assets/2016.jpg";
+import img2016_2 from "../assets/2016 (2).jpg";
+import img2017 from "../assets/2017.jpg";
+import img2017_2 from "../assets/2017 (2).jpg";
+import img2017_3 from "../assets/2017 (3).jpg";
+import img2022 from "../assets/2022.jpg";
+import img2023 from "../assets/2023.jpg";
+import img2023_2 from "../assets/2023 (2).jpg";
+import img2024 from "../assets/2024.jpg";
+import img2025 from "../assets/2025.jpg";
+import img2025_2 from "../assets/2025 (2).jpg";
+import img2025_3 from "../assets/2025 (3).jpg";
+import img2025_4 from "../assets/2025 (4).jpg";
+import img2025_5 from "../assets/2025 (5).jpg";
+import img2025_6 from "../assets/2025 (6).jpg";
 import img2015 from "../assets/2015.jpeg";
 import img2026 from "../assets/2026.jpg";
 import img2026_2 from "../assets/2026 (2).jpg";
+import { optimizeCloudinaryUrl } from "../utils/imageOptimizer";
 
 // Organize images by year
 const yearImages = {
@@ -177,7 +178,10 @@ const achievementsData = [
 ];
 
 export const achivementTop = {
-  link: "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785234333/WhatsApp_Image_2026-06-29_at_18.22.43_mjqlt2.jpg",
+  link: optimizeCloudinaryUrl(
+    "https://res.cloudinary.com/dc7tu3hzv/image/upload/v1785234333/WhatsApp_Image_2026-06-29_at_18.22.43_mjqlt2.jpg",
+    { width: 1200 },
+  ),
 };
 
 export default achievementsData;

@@ -68,6 +68,8 @@ const SponsorsSection = () => {
                   <img
                     src={sponsor.image}
                     alt={sponsor.name}
+                    loading="lazy"
+                    decoding="async"
                     className="max-h-32 max-w-full object-contain transition-all duration-300 group-hover:brightness-110 group-hover:scale-105"
                   />
 

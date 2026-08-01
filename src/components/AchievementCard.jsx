@@ -6,6 +6,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { getOptimizedImageUrl } from "../utils/imageOptimizer";
 
 const ImageCarousel = ({ images, title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -28,8 +29,10 @@ const ImageCarousel = ({ images, title }) => {
     <div className="mb-4 overflow-hidden rounded-lg relative group">
       <div className="w-full h-48 bg-gray-100 dark:bg-slate-700 flex items-center justify-center">
         <img
-          src={images[currentIndex]}
+          src={getOptimizedImageUrl(images[currentIndex], { width: 800 })}
           alt={`${title} - Image ${currentIndex + 1}`}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
           onError={(e) => {
             e.target.style.display = "none";

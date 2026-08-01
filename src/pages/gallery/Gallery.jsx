@@ -107,6 +107,9 @@ export default function GalleryPage() {
                     src={slide.src}
                     alt={slide.alt || `Hero Slide ${index + 1}`}
                     onError={() => handleImageError(slide.id)}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    {...(index === 0 ? { fetchpriority: "high" } : {})}
                     className="w-full h-full object-cover transition-transform duration-[8000ms] ease-out scale-105"
                   />
                 ) : (
@@ -227,6 +230,7 @@ export default function GalleryPage() {
                         alt={image.alt || `Gallery Image ${index + 1}`}
                         onError={() => handleImageError(image.id)}
                         loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                       />
 

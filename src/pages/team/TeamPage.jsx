@@ -43,6 +43,8 @@ const TeamMemberImage = ({ src, alt }) => {
               "https://via.placeholder.com/300x300?text=Photo+Coming+Soon"
         }
         alt={alt}
+        loading="lazy"
+        decoding="async"
         className={`w-full h-64 object-cover object-center rounded-none border-[8px] border-white shadow-[inset_0_0_0_1px_rgba(0,0,0,0.04)] transition-transform duration-300 group-hover:scale-105 ${
           isLoading ? "opacity-0" : "opacity-100"
         }`}

@@ -71,8 +71,12 @@ export default function HeroSection() {
               <img
                 src={siteConfig.hero.image}
                 alt="ASME NIT Rourkela - Engineering Excellence"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
                 className="w-full h-[320px] sm:h-[380px] md:h-[500px] lg:h-[560px] object-cover transition-transform duration-300 hover:scale-105"
               />
+
               <div className="absolute inset-0 ring-1 ring-black/10 rounded-xl"></div>
             </div>
           </div>
