@@ -1,3 +1,5 @@
+import { optimizeCloudinaryUrl } from "../utils/imageOptimizer";
+
 const teamMembers = [
   {
     name: "Radha Choudhary",
@@ -147,4 +149,9 @@ const teamMembers = [
   },
 ];
 
-export default teamMembers;
+const optimizedTeamMembers = teamMembers.map((member) => ({
+  ...member,
+  img: optimizeCloudinaryUrl(member.img, { width: 500 }),
+}));
+
+export default optimizedTeamMembers;

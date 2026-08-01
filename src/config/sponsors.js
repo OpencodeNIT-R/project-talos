@@ -1,4 +1,5 @@
-// sponsors.js
+import { optimizeCloudinaryUrl } from "../utils/imageOptimizer";
+
 const sponsors = [
   {
     name: "NIT Rourkela Alumini ",
@@ -44,4 +45,9 @@ const sponsors = [
   },
 ];
 
-export default sponsors;
+const optimizedSponsors = sponsors.map((item) => ({
+  ...item,
+  image: optimizeCloudinaryUrl(item.image, { width: 400 }),
+}));
+
+export default optimizedSponsors;

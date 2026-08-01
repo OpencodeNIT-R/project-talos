@@ -5,6 +5,7 @@ import {
   FaCalendar,
   FaMapMarkerAlt,
 } from "react-icons/fa";
+import { getOptimizedImageUrl } from "../utils/imageOptimizer";
 
 const EventCard = ({ title, description, images, date, location, status }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -67,10 +68,13 @@ const EventCard = ({ title, description, images, date, location, status }) => {
           {images && images.length > 0 ? (
             <>
               <img
-                src={images[currentImageIndex]}
+                src={getOptimizedImageUrl(images[currentImageIndex], {
+                  width: 800,
+                })}
                 alt={`${title} image ${currentImageIndex + 1}`}
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 ring-1 ring-black/10"></div>
 
