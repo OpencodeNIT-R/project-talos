@@ -62,9 +62,9 @@ const TeamPage = () => {
   const teams = [
     { name: "All" },
     { name: "Executive Body" },
-    { name: "Team Bluebird" },
     { name: "Team Bluestreak" },
     { name: "Team Blueprint" },
+    { name: "Team Bluebird" },
   ];
 
   const teamDescriptions = {
@@ -92,7 +92,10 @@ const TeamPage = () => {
 
   const filteredMembers =
     activeTeam === "All"
-      ? Array.from(new Map(teamMembers.map((m) => [m.description, m])).values())
+      ? teamMembers.filter(
+          (member, index, self) =>
+            index === self.findIndex((m) => m.name === member.name),
+        )
       : teamMembers.filter((member) => member.team === activeTeam);
 
   return (
@@ -120,7 +123,7 @@ const TeamPage = () => {
               <button
                 key={team.name}
                 onClick={() => setActiveTeam(team.name)}
-                className={`px-8 py-3 rounded-lg border-2 text-base font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 ${
+                className={`cursor-pointer px-8 py-3 rounded-lg border-2 text-base font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 ${
                   activeTeam === team.name
                     ? "bg-[#021640] dark:bg-[#0F2A5F] dark:text-white dark:border-blue-900 text-white border-[#021640] shadow-lg"
                     : "bg-white dark:bg-[#24364F] dark:text-slate-200 text-[#021640] dark:border-slate-600 border-[#021640] hover:bg-[#021640] dark:hover:bg-[#2C4363] hover:text-white"
@@ -136,7 +139,7 @@ const TeamPage = () => {
             <div className="relative w-full max-w-xs">
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="w-full px-6 py-3 bg-white border-2 border-[#021640] text-[#021640] dark:bg-[#0F2A5F] dark:text-white dark:border-blue-900 dark:hover:bg-blue-900 rounded-lg font-semibold text-base flex items-center justify-between transition-all duration-300 hover:bg-[#021640] hover:text-white"
+                className="cursor-pointer w-full px-6 py-3 bg-white border-2 border-[#021640] text-[#021640] dark:bg-[#0F2A5F] dark:text-white dark:border-blue-900 dark:hover:bg-blue-900 rounded-lg font-semibold text-base flex items-center justify-between transition-all duration-300 hover:bg-[#021640] hover:text-white"
               >
                 <span>{activeTeam}</span>
                 <FaChevronDown
@@ -153,7 +156,7 @@ const TeamPage = () => {
                         setActiveTeam(team.name);
                         setIsDropdownOpen(false);
                       }}
-                      className={`w-full px-6 py-3 text-left text-base font-medium transition-all duration-200 dark:hover:bg-[#2C4363] hover:bg-[#021640] hover:text-white ${
+                      className={`cursor-pointer w-full px-6 py-3 text-left text-base font-medium transition-all duration-200 dark:hover:bg-[#2C4363] hover:bg-[#021640] hover:text-white ${
                         activeTeam === team.name
                           ? "bg-[#021640] dark:bg-[#0F2A5F] text-white"
                           : "text-[#021640] dark:text-slate-200 border-b dark:border-slate-600 border-gray-200 last:border-b-0"

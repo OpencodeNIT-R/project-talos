@@ -15,12 +15,12 @@ const SponsorsSection = () => {
 
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-16">
-          <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#021640] dark:text-white leading-tight tracking-tight">
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="space-y-4 sm:space-y-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#021640] dark:text-white leading-tight tracking-tight [text-wrap:balance]">
               Our Trusted Partners
             </h2>
-            <p className="text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto [text-wrap:pretty] px-2 sm:px-0">
               Proudly supported by amazing organizations who believe in our
               mission and help us drive innovation forward.
             </p>

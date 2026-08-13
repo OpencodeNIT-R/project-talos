@@ -10,9 +10,9 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative bg-gradient-to-b dark:from-slate-900 dark:to-slate-900 from-gray-50 to-white min-h-[80vh] pt-[60px] sm:pt-[80px] md:pt-[100px] lg:pt-[130px] px-4 sm:px-6 md:px-10 lg:px-16 py-12 sm:py-16">
+    <section className="relative bg-gradient-to-b dark:from-slate-900 dark:to-slate-900 from-gray-50 to-white min-h-[80vh] pt-[70px] sm:pt-[90px] md:pt-[100px] lg:pt-[130px] px-4 sm:px-6 md:px-10 lg:px-16 py-10 sm:py-16">
       {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div
           className="absolute inset-0"
           style={{
@@ -21,43 +21,35 @@ export default function HeroSection() {
         ></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+      <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-12 lg:gap-16">
         {/* Text Content */}
-        <div className="w-full lg:w-1/2 space-y-8 text-center lg:text-left">
-          <div className="space-y-6">
-            <div className="inline-block px-4 py-2 dark:text-gray-100 dark:bg-slate-800 bg-[#021640]/10 text-[#021640] rounded-full text-sm md:text-base font-medium tracking-wide uppercase mt-10">
+        <div className="w-full lg:w-1/2 space-y-6 sm:space-y-8 text-center lg:text-left">
+          <div className="space-y-4 sm:space-y-6">
+            <div className="inline-block px-4 py-1.5 sm:py-2 dark:text-gray-100 dark:bg-slate-800 bg-[#021640]/10 text-[#021640] rounded-full text-xs sm:text-sm md:text-base font-semibold tracking-wider uppercase mt-4 sm:mt-6">
               {siteConfig.hero.title}
             </div>
-            {(() => {
-              const words = siteConfig.hero.subtitle.split(" ");
-              const first = words[0];
-              const rest = words.slice(1).join(" ");
-              return (
-                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold dark:text-white text-[#021640] leading-tight tracking-tighter max-w-3xl mx-auto lg:mx-0">
-                  <span className="block sm:inline">{first}</span>
-                  <span className="block sm:inline">
-                    {rest ? ` ${rest}` : ""}
-                  </span>
-                </h1>
-              );
-            })()}
-            <p className="text-xl md:text-2xl dark:text-gray-300 text-gray-600 leading-relaxed md:leading-normal max-w-2xl mx-auto lg:mx-0">
+
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold dark:text-white text-[#021640] leading-tight tracking-tight max-w-3xl mx-auto lg:mx-0 [text-wrap:balance]">
+              {siteConfig.hero.subtitle}
+            </h1>
+
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl dark:text-gray-300 text-gray-600 leading-relaxed md:leading-normal max-w-2xl mx-auto lg:mx-0 text-center lg:text-left [text-wrap:pretty] px-2 sm:px-0">
               {siteConfig.hero.description}
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:justify-center lg:justify-start items-center gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4 pt-4">
             <button
               onClick={handleJoinUs}
-              className="px-10 py-4 bg-[#0A1440] text-xl text-white dark:bg-blue-800 dark:hover:bg-blue-600/90 font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="cursor-pointer bg-[#0A1440] text-xl text-white dark:bg-blue-800 dark:hover:bg-blue-600/90 font-semibold px-10 py-4 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
-              Join Us
+              {siteConfig.hero.primaryButton || "Join Us"}
             </button>
             <a
               href="#about"
               role="button"
               tabIndex={0}
-              className="px-8 py-4 dark:text-white dark:border-white text-[#021640] font-semibold text-lg border-2 border-[#021640] rounded-lg transition-all duration-300 hover:bg-[#021640] dark:hover:bg-slate-900/90 hover:text-white"
+              className="cursor-pointer px-8 py-4 dark:text-white dark:border-white text-[#021640] font-semibold text-lg border-2 border-[#021640] rounded-lg transition-all duration-300 hover:bg-[#021640] dark:hover:bg-slate-900/90 hover:text-white text-center"
             >
               {siteConfig.hero.secondaryLink}
             </a>
@@ -74,7 +66,7 @@ export default function HeroSection() {
                 loading="eager"
                 fetchpriority="high"
                 decoding="async"
-                className="w-full h-[320px] sm:h-[380px] md:h-[500px] lg:h-[560px] object-cover transition-transform duration-300 hover:scale-105"
+                className="w-full h-[280px] sm:h-[380px] md:h-[480px] lg:h-[540px] object-cover transition-transform duration-300 hover:scale-105"
               />
 
               <div className="absolute inset-0 ring-1 ring-black/10 rounded-xl"></div>

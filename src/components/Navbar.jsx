@@ -146,7 +146,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`xl:hidden fixed top-0 left-0 w-full h-full z-40 transition-all duration-300 ease-in-out ${
+        className={`xl:hidden fixed inset-0 z-[100] h-dvh w-screen transition-all duration-300 ease-in-out ${
           mobileMenuOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-full pointer-events-none"
@@ -154,69 +154,75 @@ export default function Navbar() {
       >
         {/* Background Overlay */}
         <div
-          className="absolute inset-0 bg-[#021640]/95 backdrop-blur-sm"
+          className="absolute inset-0 bg-[#021640]/95 backdrop-blur-md"
           onClick={() => setMobileMenuOpen(false)}
         />
 
         {/* Menu Content */}
-        <div className="relative dark:bg-slate-900 bg-[#021640] h-full overflow-y-auto">
-          {/* Header with Close Button */}
-          <div className="flex justify-between items-center p-6 border-b border-slate-200 dark:border-slate-700">
-            <img
-              src={
-                dark
-                  ? "https://res.cloudinary.com/dswk9scro/image/upload/v1755092506/ASME_NIT_Rourkela_Student_Section_White_T_oe5ox2.png"
-                  : siteConfig.navigation.logo
-              }
-              alt="Logo"
-              className="h-10 w-auto"
-            />
-            <div className="flex items-center gap-3">
-              <ThemeToggle />
-              <button
-                className="text-white hover:text-gray-300 transition-colors duration-200 p-2 rounded-lg hover:bg-white/10"
-                onClick={() => setMobileMenuOpen(false)}
-                aria-label="Close menu"
-              >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+        <div className="relative dark:bg-slate-900 bg-[#021640] h-full overflow-y-auto flex flex-col justify-between">
+          <div>
+            {/* Header with Close Button */}
+            <div className="flex justify-between items-center p-6 border-b border-slate-200/20 dark:border-slate-700">
+              <img
+                src={
+                  dark
+                    ? "https://res.cloudinary.com/dswk9scro/image/upload/v1755092506/ASME_NIT_Rourkela_Student_Section_White_T_oe5ox2.png"
+                    : siteConfig.navigation.logo
+                }
+                alt="Logo"
+                className="h-10 w-auto"
+              />
+              <div className="flex items-center gap-3">
+                <ThemeToggle />
+                <button
+                  className="text-white hover:text-gray-300 transition-colors duration-200 p-2 rounded-lg hover:bg-white/10 cursor-pointer"
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-label="Close menu"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
+
+            {/* Navigation Links */}
+            <nav className="px-6 py-6">
+              <div className="space-y-2">
+                {siteConfig.navigation.links.map((item) => (
+                  <NavLink
+                    key={item.name}
+                    to={item.href}
+                    className={({ isActive }) =>
+                      `relative block w-full text-center text-lg font-semibold px-6 py-3.5 rounded-lg transition-all duration-200 text-white hover:bg-white/10 ${
+                        isActive ? "bg-white/15 text-blue-300 font-bold" : ""
+                      }`
+                    }
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </NavLink>
+                ))}
+              </div>
+            </nav>
           </div>
 
-          {/* Navigation Links */}
-          <nav className="px-6 py-8">
-            <div className="space-y-2">
-              {siteConfig.navigation.links.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={`relative block w-full text-center text-lg font-semibold px-6 py-4 rounded-lg transition-all duration-200 text-white hover:text-gray-300 hover:bg-white/10 after:absolute after:bottom-0 after:left-0 after:h-[2.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-gradient-to-r after:from-[#0A1440] after:to-[#1A56DB] after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
-              ))}
-            </div>
-          </nav>
-
           {/* Action Buttons */}
-          <div className="px-6 pb-8 space-y-4">
+          <div className="px-6 pb-8 space-y-3">
             <Button
               backgroundColor="transparent"
               textColor="white"
-              className="w-full border-2 border-white text-white px-6 py-4 text-center text-lg font-medium rounded-lg transition-all duration-300 hover:bg-white hover:text-[#021640]"
+              className="cursor-pointer w-full border-2 border-white text-white px-6 py-3.5 text-center text-lg font-medium rounded-lg transition-all duration-300 hover:bg-white hover:text-[#021640]"
               onClick={() => {
                 handleJoinUsClick();
                 setMobileMenuOpen(false);
@@ -228,7 +234,7 @@ export default function Navbar() {
             <Button
               backgroundColor="white"
               textColor="#021640"
-              className="w-full bg-white text-[#021640] px-6 py-4 text-center text-lg font-medium rounded-lg transition-all duration-300 hover:bg-gray-100"
+              className="cursor-pointer w-full bg-white text-[#021640] px-6 py-3.5 text-center text-lg font-medium rounded-lg transition-all duration-300 hover:bg-gray-100"
               onClick={() => {
                 handleContactUsClick();
                 setMobileMenuOpen(false);

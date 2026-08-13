@@ -7,11 +7,10 @@ export const getTheme = () => {
 export const isDark = () => {
   const theme = getTheme();
 
-  if (theme === "dark") return true;
   if (theme === "light") return false;
 
-  // First visit → follow system
-  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  // Default theme is dark for every user
+  return true;
 };
 
 export const applyTheme = () => {
@@ -32,12 +31,3 @@ export const subscribeTheme = (callback) => {
     listeners = listeners.filter((cb) => cb !== callback);
   };
 };
-
-// Follow system only if user hasn't chosen a theme
-const media = window.matchMedia("(prefers-color-scheme: dark)");
-
-media.addEventListener("change", () => {
-  if (!getTheme()) {
-    applyTheme();
-  }
-});

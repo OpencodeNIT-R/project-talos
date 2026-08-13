@@ -11,8 +11,9 @@ const TeamSlider = () => {
   const navigate = useNavigate();
   const swiperRef = useRef(null);
 
-  const uniqueTeamMembers = Array.from(
-    new Map(teamMembers.map((member) => [member.name, member])).values(),
+  const uniqueTeamMembers = teamMembers.filter(
+    (member, index, self) =>
+      index === self.findIndex((m) => m.name === member.name),
   );
 
   // Show only first 8 members for landing page
@@ -82,21 +83,21 @@ const TeamSlider = () => {
 
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-16">
-          <div className="space-y-6">
-            <h2 className="text-4xl sm:text-4xl md:text-5xl font-bold dark:text-white text-[#021640] leading-tight tracking-tight">
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="space-y-4 sm:space-y-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold dark:text-white text-[#021640] leading-tight tracking-tight [text-wrap:balance]">
               Our Team
             </h2>
-            <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto [text-wrap:pretty] px-2 sm:px-0">
               Meet our amazing team members who drive innovation and excellence
               in mechanical engineering through their dedication and expertise.
             </p>
           </div>
 
-          <div className="pt-8">
+          <div className="pt-6 sm:pt-8">
             <button
               onClick={viewFullTeam}
-              className="bg-[#021640] dark:bg-blue-800 dark:hover:bg-blue-800/90 hover:bg-[#021640]/90 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-lg"
+              className="cursor-pointer bg-[#021640] dark:bg-blue-800 dark:hover:bg-blue-800/90 hover:bg-[#021640]/90 text-white px-8 py-3.5 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-lg"
             >
               View all Team Members
             </button>

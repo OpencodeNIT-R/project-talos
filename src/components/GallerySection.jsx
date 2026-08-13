@@ -20,21 +20,21 @@ export default function GallerySection() {
     <section className="relative dark:bg-slate-900 bg-white px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-16">
-          <div className="space-y-6">
-            <h2 className="text-4xl sm:text-4xl md:text-5xl font-extrabold dark:text-white text-[#021640] leading-tight tracking-tight">
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="space-y-4 sm:space-y-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold dark:text-white text-[#021640] leading-tight tracking-tight [text-wrap:balance]">
               Gallery
             </h2>
-            <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto [text-wrap:pretty] px-2 sm:px-0">
               Explore our vibrant moments captured through stunning visuals that
               showcase our activities, achievements, and memorable experiences.
             </p>
           </div>
 
-          <div className="pt-8">
+          <div className="pt-6 sm:pt-8">
             <button
               onClick={viewFullGallery}
-              className="bg-[#021640] dark:bg-blue-800 dark:hover:bg-blue-800/90 hover:bg-[#021640]/90 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-lg"
+              className="cursor-pointer bg-[#021640] dark:bg-blue-800 dark:hover:bg-blue-800/90 hover:bg-[#021640]/90 text-white px-8 py-3.5 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-lg"
             >
               View Full Gallery
             </button>
