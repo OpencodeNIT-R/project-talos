@@ -41,7 +41,7 @@ const Applications = () => {
                 engineering excellence.
               </p>
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSfY2KePb3PUlmtuUxN7pUDC7xcAjdTyCDdSgsIs8vuIJinMSg/viewform?usp=header"
+                href="https://forms.gle/omNc4wvBvrersAdH8"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block"
@@ -49,7 +49,7 @@ const Applications = () => {
                 <Button
                   backgroundColor="#021640"
                   textColor="white"
-                  className="bg-[#021640] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-[#021640]/90 hover:shadow-lg hover:-translate-y-0.5"
+                  className="bg-[#021640] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-[#021640]/90 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
                 >
                   Apply Now <ArrowRight className="inline w-4 h-4 ml-2" />
                 </Button>
@@ -75,7 +75,7 @@ const Applications = () => {
                 journey.
               </p>
               <a
-                href="https://chat.whatsapp.com/GV86IjlOeAoC6H4HxO2X2N"
+                href="https://chat.whatsapp.com/D68gKqrIYSULNhTXbqMnFo?s=cl&p=a&ilr=4"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block"
@@ -83,7 +83,7 @@ const Applications = () => {
                 <Button
                   backgroundColor="#25D366"
                   textColor="white"
-                  className="bg-[#25D366] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-[#25D366]/90 hover:shadow-lg hover:-translate-y-0.5"
+                  className="bg-[#25D366] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-[#25D366]/90 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
                 >
                   Join Group <ArrowRight className="inline w-4 h-4 ml-2" />
                 </Button>
